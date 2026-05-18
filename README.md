@@ -24,7 +24,7 @@ An AI-powered intelligent medical channeling and queue management system - built
 
 ## What is ChronoMed?
 
-ChronoMed is a next-generation intelligent medical channeling platform that goes far beyond simple appointment booking. It provides real-time queue tracking, AI-powered wait time predictions, digital prescriptions, SMS/email notifications, and a full digital health record system — all under one roof.
+ChronoMed is a next generation intelligent medical channeling platform that goes far beyond simple appointment booking. It provides real-time queue tracking, AI-powered wait time predictions, digital prescriptions, SMS/email notifications, and a full digital health record system - all under one roof.
 
 Three dedicated portals serve three distinct users:
 
