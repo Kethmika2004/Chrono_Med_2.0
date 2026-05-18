@@ -5,7 +5,7 @@
 # ChronoMed
 ### *Your Time. Your Health. Perfected.*
 
-An AI-powered intelligent medical channeling and queue management system — built for the future of healthcare in Sri Lanka.
+An AI-powered intelligent medical channeling and queue management system - built for the future of healthcare in Sri Lanka.
 
 <br/>
 
@@ -39,28 +39,28 @@ Three dedicated portals serve three distinct users:
 ## Features
 
 ### Core Features
-- 📅 **Smart Appointment Booking** — multi-step flow with real-time slot availability
-- 🔢 **Live Queue Tracker** — real-time token position, wait time, and session status
-- 💳 **PayHere Payment Integration** — LKR payments with sandbox & production support
-- 📧 **Email Notifications** — beautiful HTML emails via Resend for every appointment event
-- 📱 **SMS Alerts** — Twilio-powered SMS for reminders, delays, and queue updates
-- 🔔 **Push Notifications** — Firebase FCM for browser/mobile push
-- 🔐 **Role-Based Access Control** — Patient / Doctor / Hospital / Superadmin roles with Supabase RLS
+- 📅 **Smart Appointment Booking** - multi-step flow with real-time slot availability
+- 🔢 **Live Queue Tracker** - real-time token position, wait time, and session status
+- 💳 **PayHere Payment Integration** - LKR payments with sandbox & production support
+- 📧 **Email Notifications** - beautiful HTML emails via Resend for every appointment event
+- 📱 **SMS Alerts** - Twilio-powered SMS for reminders, delays, and queue updates
+- 🔔 **Push Notifications** - Firebase FCM for browser/mobile push
+- 🔐 **Role-Based Access Control** - Patient / Doctor / Hospital / Superadmin roles with Supabase RLS
 
 ### Advanced / Exclusive Features
-- 🤖 **AI Wait Time Prediction** — ML model estimates queue wait time with confidence score
-- 🏥 **Digital Health Passport** — Patient health record: conditions, medications, allergies, history
-- 📋 **E-Prescription System** — Doctor builds digital prescriptions, QR-verified PDF sent to patient
-- 🔄 **Intelligent Waitlist** — Auto-promotes waitlisted patients with 15-min acceptance window
-- 🌐 **Multi-Language** — English, Sinhala (සිංහල), Tamil (தமிழ்) support via i18next
-- ⭐ **Reviews & Ratings** — Post-consultation ratings per doctor, wait time, and facility
-- 🚨 **Emergency Fast-Track** — Emergency appointments reviewed and moved to front of queue
-- 📊 **Hospital Analytics** — Revenue reports, session utilisation, patient no-show rates, AI arrival forecast heatmap
-- 📡 **Session Broadcasts** — Hospital sends instant alerts to all patients in a queue (in-app + SMS)
-- 🔁 **Recurring Sessions** — Doctor schedules weekly/fortnightly session patterns
-- 🚶 **Walk-In Token Management** — Register walk-in patients from hospital kiosk
-- 🔍 **QR Code Check-In** — Patient scans QR at arrival, auto-marks as arrived
-- 📁 **Medical Document Upload** — Patient uploads lab results, scans; doctor views and adds remarks
+- 🤖 **AI Wait Time Prediction** - ML model estimates queue wait time with confidence score
+- 🏥 **Digital Health Passport** - Patient health record: conditions, medications, allergies, history
+- 📋 **E-Prescription System** - Doctor builds digital prescriptions, QR-verified PDF sent to patient
+- 🔄 **Intelligent Waitlist** - Auto-promotes waitlisted patients with 15-min acceptance window
+- 🌐 **Multi-Language** - English, Sinhala (සිංහල), Tamil (தமிழ்) support via i18next
+- ⭐ **Reviews & Ratings** - Post-consultation ratings per doctor, wait time, and facility
+- 🚨 **Emergency Fast-Track** - Emergency appointments reviewed and moved to front of queue
+- 📊 **Hospital Analytics** - Revenue reports, session utilisation, patient no-show rates, AI arrival forecast heatmap
+- 📡 **Session Broadcasts** - Hospital sends instant alerts to all patients in a queue (in-app + SMS)
+- 🔁 **Recurring Sessions** - Doctor schedules weekly/fortnightly session patterns
+- 🚶 **Walk-In Token Management** - Register walk-in patients from hospital kiosk
+- 🔍 **QR Code Check-In** - Patient scans QR at arrival, auto-marks as arrived
+- 📁 **Medical Document Upload** - Patient uploads lab results, scans; doctor views and adds remarks
 
 ---
 
