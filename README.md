@@ -288,6 +288,6 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 
 Built with ❤️ in Sri Lanka 🇱🇰
 
-**ChronoMed** — *Your Time. Your Health. Perfected.*
+**ChronoMed** - *Your Time. Your Health. Perfected.*
 
 </div>
