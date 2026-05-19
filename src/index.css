@@ -4,21 +4,28 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%; /* #F0F4F8 */
-    --foreground: 222.2 84% 4.9%; /* #1A2332 */
-    --card: 0 0% 100%; /* #FFFFFF */
+    --background: 210 40% 98%;
+    /* #F0F4F8 */
+    --foreground: 222.2 84% 4.9%;
+    /* #1A2332 */
+    --card: 0 0% 100%;
+    /* #FFFFFF */
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-    --primary: 171 80% 26%; /* #0D7A6B */
+    --primary: 171 80% 26%;
+    /* #0D7A6B */
     --primary-foreground: 210 40% 98%;
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
     --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%; /* #4A5568 */
-    --accent: 39 91% 52%; /* #F4A916 */
+    --muted-foreground: 215.4 16.3% 46.9%;
+    /* #4A5568 */
+    --accent: 39 91% 52%;
+    /* #F4A916 */
     --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%; /* #EF4444 */
+    --destructive: 0 84.2% 60.2%;
+    /* #EF4444 */
     --destructive-foreground: 210 40% 98%;
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
@@ -53,6 +60,7 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
