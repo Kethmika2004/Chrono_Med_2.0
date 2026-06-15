@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Search, MapPin, Star, Calendar, Clock, CreditCard, CheckCircle2, ChevronRight, ChevronLeft } from 'lucide-react';
+import { useIntlayer } from 'react-intlayer';
 
 // Mock Data
 const MOCK_DOCTORS = [
@@ -30,6 +31,36 @@ export default function BookAppointment() {
   const [bookingConfirmed, setBookingConfirmed] = useState(false);
   const [tokenNumber, setTokenNumber] = useState<number | null>(null);
 
+  const {
+    title,
+    subtitle,
+    stepDoctor,
+    stepSession,
+    stepDetails,
+    stepConfirm,
+    searchPlaceholder,
+    consultationFee,
+    availableSessions,
+    tokensLeft,
+    detailsNotice,
+    complaintLabel,
+    complaintPlaceholder,
+    bookingConfirmedTitle,
+    bookingConfirmedDesc,
+    tokenNumberLabel,
+    goToDashboard,
+    summaryTitle,
+    doctorLabel,
+    dateLabel,
+    timeLabel,
+    bookingFee,
+    totalPayable,
+    payButton,
+    processingPayment,
+    backButton,
+    continueButton
+  } = useIntlayer('book-appointment');
+
   const handleNext = () => setStep(s => Math.min(s + 1, 4));
   const handlePrev = () => setStep(s => Math.max(s - 1, 1));
 
@@ -52,8 +83,8 @@ export default function BookAppointment() {
   return (
     <div className="max-w-4xl mx-auto space-y-8">
       <div>
-        <h1 className="text-3xl font-bold text-slate-900">Book Appointment</h1>
-        <p className="text-slate-500 mt-1">Schedule your next visit in 4 easy steps</p>
+        <h1 className="text-3xl font-bold text-slate-900">{title}</h1>
+        <p className="text-slate-500 mt-1">{subtitle}</p>
       </div>
 
       {/* Stepper */}
@@ -64,7 +95,7 @@ export default function BookAppointment() {
             style={{ width: `${((step - 1) / 3) * 100}%` }}
           />
         </div>
-        {['Doctor', 'Session', 'Details', 'Confirm'].map((label, index) => {
+        {[stepDoctor, stepSession, stepDetails, stepConfirm].map((label, index) => {
           const isActive = step >= index + 1;
           const isCurrent = step === index + 1;
           return (
@@ -90,7 +121,7 @@ export default function BookAppointment() {
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5" />
                 <Input 
-                  placeholder="Search doctors by name or specialty..." 
+                  placeholder={searchPlaceholder} 
                   className="pl-10 h-12 text-lg bg-slate-50 border-slate-200 focus-visible:ring-teal-500"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
@@ -117,7 +148,7 @@ export default function BookAppointment() {
                     </div>
                     <div className="text-right">
                       <p className="text-lg font-bold text-slate-900">Rs. {doc.fee}</p>
-                      <p className="text-xs text-slate-500">Consultation Fee</p>
+                      <p className="text-xs text-slate-500">{consultationFee}</p>
                     </div>
                   </div>
                 ))}
@@ -135,7 +166,7 @@ export default function BookAppointment() {
                    <p className="text-sm text-slate-500">{selectedDoctor.specialty}</p>
                  </div>
               </div>
-              <h3 className="text-lg font-semibold mb-4">Available Sessions</h3>
+              <h3 className="text-lg font-semibold mb-4">{availableSessions}</h3>
               <div className="grid sm:grid-cols-2 gap-4">
                 {MOCK_SESSIONS.map(session => (
                   <div 
@@ -155,7 +186,7 @@ export default function BookAppointment() {
                     </div>
                     <div className="flex items-center justify-between text-sm">
                       <span className="bg-teal-100 text-teal-800 px-2 py-1 rounded-md font-medium">
-                        {session.tokensAvailable} tokens left
+                        {session.tokensAvailable} {tokensLeft}
                       </span>
                     </div>
                   </div>
@@ -168,14 +199,14 @@ export default function BookAppointment() {
           {step === 3 && (
             <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-500">
                <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 text-amber-800 text-sm">
-                 Please provide any relevant details for the doctor prior to the session.
+                 {detailsNotice}
                </div>
                <div className="space-y-4">
                  <div className="space-y-2">
-                   <label className="text-sm font-medium">Chief Complaint / Reason for visit</label>
+                   <label className="text-sm font-medium">{complaintLabel}</label>
                    <textarea 
                      className="w-full min-h-[120px] p-3 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-teal-500 resize-none bg-slate-50"
-                     placeholder="E.g., Experiencing mild chest pain for the last 2 days..."
+                     placeholder={complaintPlaceholder}
                      value={complaint}
                      onChange={(e) => setComplaint(e.target.value)}
                    />
@@ -187,37 +218,37 @@ export default function BookAppointment() {
           {/* Step 4: Payment & Confirmation */}
           {step === 4 && (
             <div className="animate-in fade-in slide-in-from-right-4 duration-500">
-              {bookingConfirmed ? (
+               {bookingConfirmed ? (
                 <div className="text-center space-y-6 py-8">
                   <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
                     <CheckCircle2 className="w-12 h-12 text-green-600" />
                   </div>
-                  <h2 className="text-3xl font-bold text-slate-900">Booking Confirmed!</h2>
+                  <h2 className="text-3xl font-bold text-slate-900">{bookingConfirmedTitle}</h2>
                   <p className="text-slate-500 max-w-md mx-auto">
-                    Your appointment with {selectedDoctor.name} on {selectedSession.date} is confirmed.
+                    {bookingConfirmedDesc} ({selectedDoctor.name} - {selectedSession.date})
                   </p>
                   
                   <div className="bg-slate-50 border border-slate-200 rounded-2xl p-8 max-w-sm mx-auto shadow-sm my-8">
-                    <p className="text-sm text-slate-500 font-medium uppercase tracking-wider mb-2">Your Token Number</p>
+                    <p className="text-sm text-slate-500 font-medium uppercase tracking-wider mb-2">{tokenNumberLabel}</p>
                     <p className="text-6xl font-black text-teal-600">#{tokenNumber}</p>
                   </div>
 
                   <Button className="bg-teal-600 hover:bg-teal-700 h-12 px-8" asChild>
-                    <a href="/patient/dashboard">Go to Dashboard</a>
+                    <a href="/patient/dashboard">{goToDashboard}</a>
                   </Button>
                 </div>
               ) : (
                 <div className="space-y-8">
                   <div className="bg-slate-50 p-6 rounded-xl border border-slate-200">
-                    <h3 className="font-semibold text-lg mb-4">Summary</h3>
+                    <h3 className="font-semibold text-lg mb-4">{summaryTitle}</h3>
                     <div className="space-y-3 text-sm">
-                      <div className="flex justify-between"><span className="text-slate-500">Doctor</span><span className="font-medium text-slate-900">{selectedDoctor.name}</span></div>
-                      <div className="flex justify-between"><span className="text-slate-500">Date</span><span className="font-medium text-slate-900">{selectedSession.date}</span></div>
-                      <div className="flex justify-between"><span className="text-slate-500">Time</span><span className="font-medium text-slate-900">{selectedSession.time}</span></div>
+                      <div className="flex justify-between"><span className="text-slate-500">{doctorLabel}</span><span className="font-medium text-slate-900">{selectedDoctor.name}</span></div>
+                      <div className="flex justify-between"><span className="text-slate-500">{dateLabel}</span><span className="font-medium text-slate-900">{selectedSession.date}</span></div>
+                      <div className="flex justify-between"><span className="text-slate-500">{timeLabel}</span><span className="font-medium text-slate-900">{selectedSession.time}</span></div>
                       <div className="w-full h-px bg-slate-200 my-4" />
-                      <div className="flex justify-between"><span className="text-slate-500">Consultation Fee</span><span>Rs. {selectedDoctor.fee}</span></div>
-                      <div className="flex justify-between"><span className="text-slate-500">Booking Fee</span><span>Rs. 300</span></div>
-                      <div className="flex justify-between text-lg font-bold text-slate-900 pt-2"><span className="text-slate-900">Total Payable</span><span className="text-teal-600">Rs. {selectedDoctor.fee + 300}</span></div>
+                      <div className="flex justify-between"><span className="text-slate-500">{consultationFee}</span><span>Rs. {selectedDoctor.fee}</span></div>
+                      <div className="flex justify-between"><span className="text-slate-500">{bookingFee}</span><span>Rs. 300</span></div>
+                      <div className="flex justify-between text-lg font-bold text-slate-900 pt-2"><span className="text-slate-900">{totalPayable}</span><span className="text-teal-600">Rs. {selectedDoctor.fee + 300}</span></div>
                     </div>
                   </div>
 
@@ -226,10 +257,10 @@ export default function BookAppointment() {
                     onClick={handlePayment}
                     disabled={isProcessing}
                   >
-                    {isProcessing ? 'Processing Payment...' : (
+                    {isProcessing ? processingPayment : (
                       <>
                         <CreditCard className="w-5 h-5" />
-                        Pay with PayHere
+                        {payButton}
                       </>
                     )}
                   </Button>
@@ -248,7 +279,7 @@ export default function BookAppointment() {
               disabled={step === 1}
               className="gap-2"
             >
-              <ChevronLeft className="w-4 h-4" /> Back
+              <ChevronLeft className="w-4 h-4" /> {backButton}
             </Button>
             
             {step < 4 && (
@@ -260,7 +291,7 @@ export default function BookAppointment() {
                 }
                 className="gap-2 bg-teal-600 hover:bg-teal-700"
               >
-                Continue <ChevronRight className="w-4 h-4" />
+                {continueButton} <ChevronRight className="w-4 h-4" />
               </Button>
             )}
           </div>

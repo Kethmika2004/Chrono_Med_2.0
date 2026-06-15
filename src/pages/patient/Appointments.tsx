@@ -3,6 +3,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Calendar, Clock, MapPin, Search, ChevronRight, XCircle } from 'lucide-react';
 import { Input } from '@/components/ui/input';
+import { useIntlayer } from 'react-intlayer';
 
 const MOCK_APPOINTMENTS = [
   { id: 1, status: 'upcoming', doctor: 'Dr. Sarah Connor', specialty: 'Cardiologist', hospital: 'Nawaloka Hospital', date: 'Oct 24, 2023', time: '10:00 AM', token: 14 },
@@ -15,22 +16,44 @@ export default function Appointments() {
   const [activeTab, setActiveTab] = useState<'upcoming' | 'past' | 'cancelled'>('upcoming');
   const [searchQuery, setSearchQuery] = useState('');
 
+  const {
+    title,
+    subtitle,
+    searchPlaceholder,
+    tabUpcoming,
+    tabPast,
+    tabCancelled,
+    noUpcoming,
+    noPast,
+    noCancelled,
+    noAppointmentsDesc,
+    cancelButton,
+    trackerButton,
+    summaryButton
+  } = useIntlayer('appointments');
+
   const filtered = MOCK_APPOINTMENTS.filter(apt => 
     apt.status === activeTab && 
     (apt.doctor.toLowerCase().includes(searchQuery.toLowerCase()) || apt.specialty.toLowerCase().includes(searchQuery.toLowerCase()))
   );
 
+  const getNoAppointmentsTitle = () => {
+    if (activeTab === 'upcoming') return noUpcoming;
+    if (activeTab === 'past') return noPast;
+    return noCancelled;
+  };
+
   return (
     <div className="max-w-5xl mx-auto space-y-8">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-slate-900">My Appointments</h1>
-          <p className="text-slate-500 mt-1">Manage all your medical visits</p>
+          <h1 className="text-3xl font-bold text-slate-900">{title}</h1>
+          <p className="text-slate-500 mt-1">{subtitle}</p>
         </div>
         <div className="relative max-w-sm w-full">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5" />
           <Input 
-            placeholder="Search doctors..." 
+            placeholder={searchPlaceholder} 
             className="pl-10 h-11 bg-white border-slate-200"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
@@ -41,9 +64,9 @@ export default function Appointments() {
       {/* Tabs */}
       <div className="flex gap-2 border-b border-slate-200 pb-px overflow-x-auto no-scrollbar">
         {[
-          { id: 'upcoming', label: 'Upcoming' },
-          { id: 'past', label: 'Past Visits' },
-          { id: 'cancelled', label: 'Cancelled' }
+          { id: 'upcoming', label: tabUpcoming },
+          { id: 'past', label: tabPast },
+          { id: 'cancelled', label: tabCancelled }
         ].map(tab => (
           <button
             key={tab.id}
@@ -65,8 +88,8 @@ export default function Appointments() {
         {filtered.length === 0 ? (
           <div className="text-center py-16 bg-white border border-slate-100 rounded-xl">
             <Calendar className="w-12 h-12 text-slate-300 mx-auto mb-4" />
-            <h3 className="text-lg font-medium text-slate-900">No {activeTab} appointments</h3>
-            <p className="text-slate-500 mt-1">You don't have any appointments in this category.</p>
+            <h3 className="text-lg font-medium text-slate-900">{getNoAppointmentsTitle()}</h3>
+            <p className="text-slate-500 mt-1">{noAppointmentsDesc}</p>
           </div>
         ) : (
           filtered.map(apt => (
@@ -99,15 +122,17 @@ export default function Appointments() {
                     {apt.status === 'upcoming' ? (
                       <>
                         <Button variant="outline" className="text-red-600 hover:text-red-700 hover:bg-red-50 border-red-200" size="sm">
-                          <XCircle className="w-4 h-4 mr-2" /> Cancel
+                          <XCircle className="w-4 h-4 mr-2" /> {cancelButton}
                         </Button>
-                        <Button className="bg-teal-600 hover:bg-teal-700" size="sm">
-                          Tracker <ChevronRight className="w-4 h-4 ml-1" />
+                        <Button className="bg-teal-600 hover:bg-teal-700" size="sm" asChild>
+                          <Link to="/patient/queue">
+                            {trackerButton} <ChevronRight className="w-4 h-4 ml-1" />
+                          </Link>
                         </Button>
                       </>
                     ) : (
                       <Button variant="outline" size="sm">
-                        View Summary
+                        {summaryButton}
                       </Button>
                     )}
                   </div>

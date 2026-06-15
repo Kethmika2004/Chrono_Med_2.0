@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { AlertCircle, Loader2, User, Stethoscope, Building2 } from 'lucide-react';
+import { useIntlayer } from 'react-intlayer';
 
 export default function Register() {
   const [step, setStep] = useState(1);
@@ -21,6 +22,28 @@ export default function Register() {
   const [error, setError] = useState<string | null>(null);
 
   const navigate = useNavigate();
+  const {
+    title,
+    step1Subtitle,
+    step2Subtitle,
+    patientRole,
+    patientDesc,
+    doctorRole,
+    doctorDesc,
+    hospitalRole,
+    hospitalDesc,
+    fullNameLabel,
+    fullNameHospitalLabel,
+    emailLabel,
+    passwordLabel,
+    contactLabel,
+    licenseLabel,
+    registrationLabel,
+    backButton,
+    registerButton,
+    alreadyHaveAccount,
+    signInLink
+  } = useIntlayer('register');
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -73,9 +96,9 @@ export default function Register() {
   return (
     <Card className="w-full border-0 shadow-none">
       <CardHeader className="space-y-1">
-        <CardTitle className="text-2xl text-center">Create an account</CardTitle>
-        <CardDescription className="text-center">
-          {step === 1 ? 'Select your account type to begin' : 'Fill in your details to register'}
+        <CardTitle className="text-2xl text-center">{title}</CardTitle>
+        <CardDescription className="text-center font-medium">
+          {step === 1 ? step1Subtitle : step2Subtitle}
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -96,8 +119,8 @@ export default function Register() {
                 <User className="text-teal-700 w-6 h-6" />
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900">Patient</h3>
-                <p className="text-sm text-gray-500">Book appointments and manage health records</p>
+                <h3 className="font-semibold text-gray-900">{patientRole}</h3>
+                <p className="text-sm text-gray-500">{patientDesc}</p>
               </div>
             </button>
             <button
@@ -108,8 +131,8 @@ export default function Register() {
                 <Stethoscope className="text-amber-600 w-6 h-6" />
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900">Doctor</h3>
-                <p className="text-sm text-gray-500">Manage sessions, appointments, and patients</p>
+                <h3 className="font-semibold text-gray-900">{doctorRole}</h3>
+                <p className="text-sm text-gray-500">{doctorDesc}</p>
               </div>
             </button>
             <button
@@ -120,8 +143,8 @@ export default function Register() {
                 <Building2 className="text-blue-600 w-6 h-6" />
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900">Hospital / Clinic</h3>
-                <p className="text-sm text-gray-500">Manage doctors, departments, and analytics</p>
+                <h3 className="font-semibold text-gray-900">{hospitalRole}</h3>
+                <p className="text-sm text-gray-500">{hospitalDesc}</p>
               </div>
             </button>
           </div>
@@ -130,52 +153,52 @@ export default function Register() {
         {step === 2 && (
           <form onSubmit={handleRegister} className="space-y-4">
             <div className="space-y-2">
-              <label className="text-sm font-medium">Full Name {role === 'hospital' && '/ Hospital Name'}</label>
+              <label className="text-sm font-medium">{role === 'hospital' ? fullNameHospitalLabel : fullNameLabel}</label>
               <Input value={fullName} onChange={(e) => setFullName(e.target.value)} required />
             </div>
             <div className="space-y-2">
-              <label className="text-sm font-medium">Email Address</label>
+              <label className="text-sm font-medium">{emailLabel}</label>
               <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
             </div>
             <div className="space-y-2">
-              <label className="text-sm font-medium">Password</label>
+              <label className="text-sm font-medium">{passwordLabel}</label>
               <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required minLength={6} />
             </div>
             <div className="space-y-2">
-              <label className="text-sm font-medium">Contact Number</label>
+              <label className="text-sm font-medium">{contactLabel}</label>
               <Input value={contactNumber} onChange={(e) => setContactNumber(e.target.value)} required />
             </div>
 
             {role === 'doctor' && (
               <div className="space-y-2">
-                <label className="text-sm font-medium">Medical License Number</label>
+                <label className="text-sm font-medium">{licenseLabel}</label>
                 <Input value={licenseNumber} onChange={(e) => setLicenseNumber(e.target.value)} required />
               </div>
             )}
 
             {role === 'hospital' && (
               <div className="space-y-2">
-                <label className="text-sm font-medium">Registration Number</label>
+                <label className="text-sm font-medium">{registrationLabel}</label>
                 <Input value={registrationNumber} onChange={(e) => setRegistrationNumber(e.target.value)} required />
               </div>
             )}
 
             <div className="pt-2 flex gap-3">
               <Button type="button" variant="outline" className="w-full" onClick={() => setStep(1)}>
-                Back
+                {backButton}
               </Button>
               <Button type="submit" className="w-full" disabled={loading}>
-                {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : 'Register'}
+                {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : registerButton}
               </Button>
             </div>
           </form>
         )}
       </CardContent>
       <CardFooter className="flex justify-center border-t border-gray-100 pt-6">
-        <div className="text-sm text-gray-500">
-          Already have an account?{' '}
+        <div className="text-sm text-gray-500 font-medium">
+          {alreadyHaveAccount}{' '}
           <Link to="/auth/login" className="text-primary font-semibold hover:underline">
-            Sign in
+            {signInLink}
           </Link>
         </div>
       </CardFooter>

@@ -2,12 +2,34 @@ import { useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Clock, Users, Activity, CheckCircle2, MapPin } from 'lucide-react';
+import { useIntlayer } from 'react-intlayer';
 
 export default function QueueTracker() {
   const [currentQueueToken, setCurrentQueueToken] = useState(11);
   const myToken = 14;
   const [hasArrived, setHasArrived] = useState(false);
   const [isSessionActive, setIsSessionActive] = useState(true);
+
+  const {
+    title,
+    subtitle,
+    sessionActive,
+    sessionInactive,
+    currentlyCalling,
+    yourToken,
+    estWait,
+    tokenStart,
+    yourTurn,
+    patientsAheadText,
+    patientAheadText,
+    sessionDetails,
+    avgTimeText,
+    checkedInTitle,
+    checkedInDesc,
+    hospitalQuestion,
+    hospitalQuestionDesc,
+    arrivedButton
+  } = useIntlayer('queue-tracker');
 
   // Mock real-time update
   useEffect(() => {
@@ -28,8 +50,8 @@ export default function QueueTracker() {
     <div className="max-w-3xl mx-auto space-y-8">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-slate-900">Live Queue Tracker</h1>
-          <p className="text-slate-500 mt-1">Track your appointment in real-time</p>
+          <h1 className="text-3xl font-bold text-slate-900">{title}</h1>
+          <p className="text-slate-500 mt-1">{subtitle}</p>
         </div>
         <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-sm border border-slate-200 w-fit">
           <span className="relative flex h-3 w-3">
@@ -43,7 +65,7 @@ export default function QueueTracker() {
             )}
           </span>
           <span className={`text-sm font-semibold ${isSessionActive ? 'text-teal-700' : 'text-slate-500'}`}>
-            {isSessionActive ? 'Session In Progress' : 'Session Not Started'}
+            {isSessionActive ? sessionActive : sessionInactive}
           </span>
         </div>
       </div>
@@ -54,18 +76,18 @@ export default function QueueTracker() {
           <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
           
           <div className="relative z-10">
-            <h2 className="text-lg font-medium text-slate-300 uppercase tracking-widest mb-4">Currently Calling</h2>
+            <h2 className="text-lg font-medium text-slate-300 uppercase tracking-widest mb-4">{currentlyCalling}</h2>
             <div className="text-8xl md:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-400 drop-shadow-lg">
               {currentQueueToken}
             </div>
             
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-4 flex-1 min-w-[140px] max-w-[200px]">
-                <p className="text-slate-400 text-xs uppercase tracking-wider mb-1">Your Token</p>
+                <p className="text-slate-400 text-xs uppercase tracking-wider mb-1">{yourToken}</p>
                 <p className="text-3xl font-bold text-teal-400">#{myToken}</p>
               </div>
               <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-4 flex-1 min-w-[140px] max-w-[200px]">
-                <p className="text-slate-400 text-xs uppercase tracking-wider mb-1">Est. Wait</p>
+                <p className="text-slate-400 text-xs uppercase tracking-wider mb-1">{estWait}</p>
                 <p className="text-3xl font-bold text-amber-400">{estWaitTime}m</p>
               </div>
             </div>
@@ -76,8 +98,8 @@ export default function QueueTracker() {
           {/* Progress Bar */}
           <div className="space-y-3">
             <div className="flex justify-between text-sm font-medium text-slate-500">
-              <span>Token 1</span>
-              <span>Your Turn (Token {myToken})</span>
+              <span>{tokenStart}</span>
+              <span>{yourTurn.replace('{myToken}', String(myToken))}</span>
             </div>
             <div className="h-4 bg-slate-100 rounded-full overflow-hidden relative">
               <div 
@@ -87,13 +109,13 @@ export default function QueueTracker() {
             </div>
             <p className="text-center text-sm text-slate-600 font-medium">
               <Users className="inline w-4 h-4 mr-1 text-slate-400" /> 
-              {patientsAhead} {patientsAhead === 1 ? 'patient' : 'patients'} ahead of you
+              {patientsAhead} {patientsAhead === 1 ? patientAheadText : patientsAheadText}
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 bg-slate-50 rounded-2xl p-6 border border-slate-100">
              <div className="space-y-4">
-               <h3 className="font-semibold text-slate-800">Session Details</h3>
+               <h3 className="font-semibold text-slate-800">{sessionDetails}</h3>
                <div className="space-y-3 text-sm">
                  <div className="flex items-start gap-3">
                    <div className="bg-white p-2 rounded-lg shadow-sm text-teal-600"><Activity className="w-5 h-5" /></div>
@@ -106,7 +128,7 @@ export default function QueueTracker() {
                    <div className="bg-white p-2 rounded-lg shadow-sm text-amber-600"><Clock className="w-5 h-5" /></div>
                    <div>
                      <p className="font-medium text-slate-900">10:00 AM - 01:00 PM</p>
-                     <p className="text-slate-500">Average time per patient: ~15 mins</p>
+                     <p className="text-slate-500">{avgTimeText}</p>
                    </div>
                  </div>
                  <div className="flex items-start gap-3">
@@ -125,19 +147,19 @@ export default function QueueTracker() {
                    <div className="mx-auto w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
                      <CheckCircle2 className="w-6 h-6 text-green-600" />
                    </div>
-                   <h3 className="font-semibold text-green-800">You're checked in!</h3>
-                   <p className="text-sm text-green-600">Please wait in the seating area. Your token will be called shortly.</p>
+                   <h3 className="font-semibold text-green-800">{checkedInTitle}</h3>
+                   <p className="text-sm text-green-600">{checkedInDesc}</p>
                  </div>
                ) : (
                  <div className="bg-white border border-slate-200 rounded-xl p-6 text-center space-y-4 shadow-sm">
-                   <h3 className="font-semibold text-slate-800">Are you at the hospital?</h3>
-                   <p className="text-sm text-slate-500">Let the doctor know you've arrived so they can call you in.</p>
+                   <h3 className="font-semibold text-slate-800">{hospitalQuestion}</h3>
+                   <p className="text-sm text-slate-500">{hospitalQuestionDesc}</p>
                    <Button 
                      className="w-full h-12 text-lg bg-teal-600 hover:bg-teal-700" 
                      onClick={() => setHasArrived(true)}
                      disabled={!isSessionActive}
                    >
-                     I Have Arrived
+                     {arrivedButton}
                    </Button>
                  </div>
                )}

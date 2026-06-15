@@ -5,11 +5,32 @@ import { useAuthStore } from '@/store/authStore';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { CalendarPlus, CalendarDays, Activity, FileText, Bell, Clock } from 'lucide-react';
+import { useIntlayer } from 'react-intlayer';
 
 export default function PatientDashboard() {
   const { profile } = useAuthStore();
   const [activeAppointment, setActiveAppointment] = useState<any>(null);
   const [upcomingAppointments, setUpcomingAppointments] = useState<any[]>([]);
+  const {
+    welcomeTitle,
+    welcomeSubtitle,
+    bookAppointment,
+    myAppointments,
+    queueTracker,
+    healthRecords,
+    activeQueue,
+    tokenLabel,
+    roomLabel,
+    estWaitTime,
+    mins,
+    patientsAhead,
+    viewLiveTracker,
+    upcomingAppointments: upcomingAppointmentsTitle,
+    viewAll,
+    detailsButton,
+    notificationsTitle,
+    viewAllNotifications
+  } = useIntlayer('dashboard');
 
   useEffect(() => {
     // Mock fetching active & upcoming appointments
@@ -25,9 +46,11 @@ export default function PatientDashboard() {
       {/* Welcome Banner */}
       <div className="bg-gradient-to-r from-teal-600 to-teal-800 rounded-2xl p-6 sm:p-10 text-white shadow-lg relative overflow-hidden">
         <div className="relative z-10">
-          <h1 className="text-3xl font-bold mb-2">Welcome back, {profile?.full_name?.split(' ')[0] || 'Patient'}!</h1>
+          <h1 className="text-3xl font-bold mb-2">
+            {welcomeTitle}, {profile?.full_name?.split(' ')[0] || 'Patient'}!
+          </h1>
           <p className="text-teal-100 max-w-lg text-lg">
-            Manage your health journey, view upcoming appointments, and keep track of your medical records.
+            {welcomeSubtitle}
           </p>
         </div>
         {/* Decorative elements */}
@@ -37,10 +60,10 @@ export default function PatientDashboard() {
       {/* Quick Actions */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {[
-          { title: 'Book Appointment', icon: CalendarPlus, href: '/patient/book', color: 'bg-blue-50 text-blue-600' },
-          { title: 'My Appointments', icon: CalendarDays, href: '/patient/appointments', color: 'bg-amber-50 text-amber-600' },
-          { title: 'Queue Tracker', icon: Activity, href: '/patient/queue', color: 'bg-rose-50 text-rose-600' },
-          { title: 'Health Records', icon: FileText, href: '/patient/health-record', color: 'bg-emerald-50 text-emerald-600' },
+          { title: bookAppointment, icon: CalendarPlus, href: '/patient/book', color: 'bg-blue-50 text-blue-600' },
+          { title: myAppointments, icon: CalendarDays, href: '/patient/appointments', color: 'bg-amber-50 text-amber-600' },
+          { title: queueTracker, icon: Activity, href: '/patient/queue', color: 'bg-rose-50 text-rose-600' },
+          { title: healthRecords, icon: FileText, href: '/patient/health-record', color: 'bg-emerald-50 text-emerald-600' },
         ].map((action, idx) => (
           <Link key={idx} to={action.href}>
             <Card className="hover:shadow-md transition-shadow cursor-pointer h-full border-slate-100 group">
@@ -66,24 +89,24 @@ export default function PatientDashboard() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-3 w-3 bg-teal-500"></span>
                 </span>
-                Active Queue
+                {activeQueue}
               </h2>
               <span className="text-sm font-medium text-teal-600 bg-white px-3 py-1 rounded-full border border-teal-200">
-                Token #14
+                {tokenLabel} #14
               </span>
             </div>
             <CardContent className="p-6">
               <div className="flex flex-col md:flex-row gap-6 items-center md:items-start justify-between">
                 <div className="space-y-1 text-center md:text-left">
                   <h3 className="text-xl font-bold text-slate-800">Dr. Sarah Connor</h3>
-                  <p className="text-slate-500">Cardiologist • Room 302</p>
+                  <p className="text-slate-500">Cardiologist • {roomLabel} 302</p>
                   <div className="mt-4 flex items-center justify-center md:justify-start gap-2 text-sm text-slate-600 bg-slate-50 p-2 rounded-lg w-fit">
                     <Clock className="w-4 h-4 text-amber-500" />
-                    <span>Est. wait time: <strong>15 mins</strong> (3 patients ahead)</span>
+                    <span>{estWaitTime}: <strong>15 {mins}</strong> (3 {patientsAhead})</span>
                   </div>
                 </div>
                 <Button className="w-full md:w-auto bg-teal-600 hover:bg-teal-700" asChild>
-                  <Link to="/patient/queue">View Live Tracker</Link>
+                  <Link to="/patient/queue">{viewLiveTracker}</Link>
                 </Button>
               </div>
             </CardContent>
@@ -93,8 +116,8 @@ export default function PatientDashboard() {
           <Card className="shadow-sm border-slate-100">
             <CardHeader className="pb-3 border-b border-slate-50">
               <div className="flex items-center justify-between">
-                <CardTitle className="text-lg font-semibold">Upcoming Appointments</CardTitle>
-                <Link to="/patient/appointments" className="text-sm text-teal-600 hover:underline font-medium">View all</Link>
+                <CardTitle className="text-lg font-semibold">{upcomingAppointmentsTitle}</CardTitle>
+                <Link to="/patient/appointments" className="text-sm text-teal-600 hover:underline font-medium">{viewAll}</Link>
               </div>
             </CardHeader>
             <CardContent className="p-0">
@@ -114,7 +137,7 @@ export default function PatientDashboard() {
                         </p>
                       </div>
                     </div>
-                    <Button variant="outline" size="sm" className="hidden sm:flex">Details</Button>
+                    <Button variant="outline" size="sm" className="hidden sm:flex">{detailsButton}</Button>
                   </div>
                 ))}
               </div>
@@ -127,7 +150,7 @@ export default function PatientDashboard() {
           <Card className="shadow-sm border-slate-100">
             <CardHeader className="pb-3">
               <CardTitle className="text-lg font-semibold flex items-center gap-2">
-                <Bell className="w-5 h-5 text-slate-500" /> Notifications
+                <Bell className="w-5 h-5 text-slate-500" /> {notificationsTitle}
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -149,8 +172,8 @@ export default function PatientDashboard() {
                   </div>
                 ))}
               </div>
-              <Button variant="ghost" className="w-full mt-4 text-sm text-teal-600" asChild>
-                 <Link to="/patient/notifications">View all notifications</Link>
+              <Button variant="ghost" className="w-full mt-4 text-sm text-teal-600 hover:text-teal-700 hover:bg-slate-50" asChild>
+                 <Link to="/patient/notifications">{viewAllNotifications}</Link>
               </Button>
             </CardContent>
           </Card>
