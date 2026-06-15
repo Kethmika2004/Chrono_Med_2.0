@@ -1,4 +1,4 @@
-import { t, type Dictionary } from "intlayer"
+import { t } from "intlayer"
 
 const queueTrackerContent = {
   key: "queue-tracker",
@@ -220,6 +220,6 @@ const queueTrackerContent = {
       es: "He llegado",
     }),
   },
-} satisfies Dictionary
+}
 
 export default queueTrackerContent

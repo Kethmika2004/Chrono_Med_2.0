@@ -1,4 +1,4 @@
-import { t, type Dictionary } from "intlayer"
+import { t } from "intlayer"
 
 const registerContent = {
   key: "register",
@@ -244,6 +244,6 @@ const registerContent = {
       es: "Iniciar sesión",
     }),
   },
-} satisfies Dictionary
+}
 
 export default registerContent

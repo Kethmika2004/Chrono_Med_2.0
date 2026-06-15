@@ -1,4 +1,4 @@
-import { t, type Dictionary } from "intlayer"
+import { t } from "intlayer"
 
 const dashboardContent = {
   key: "dashboard",
@@ -220,6 +220,5 @@ const dashboardContent = {
       es: "Ver todas las notificaciones",
     }),
   },
-} satisfies Dictionary
-
+}
 export default dashboardContent

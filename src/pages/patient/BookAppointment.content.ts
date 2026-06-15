@@ -1,4 +1,4 @@
-import { t, type Dictionary } from "intlayer"
+import { t } from "intlayer"
 
 const bookAppointmentContent = {
   key: "book-appointment",
@@ -328,6 +328,6 @@ const bookAppointmentContent = {
       es: "Continuar",
     }),
   },
-} satisfies Dictionary
+}
 
 export default bookAppointmentContent
