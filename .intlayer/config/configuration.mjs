@@ -1,13 +1,27 @@
 const internationalization = {
   "locales": [
     "en",
-    null,
-    "ta"
+    "si",
+    "ta",
+    "hi",
+    "fr",
+    "de",
+    "ar",
+    "ja",
+    "zh",
+    "es"
   ],
   "requiredLocales": [
     "en",
-    null,
-    "ta"
+    "si",
+    "ta",
+    "hi",
+    "fr",
+    "de",
+    "ar",
+    "ja",
+    "zh",
+    "es"
   ],
   "strictMode": "inclusive",
   "defaultLocale": "en"
@@ -18,7 +32,9 @@ const routing = {
     "cookies": [
       {
         "name": "INTLAYER_LOCALE",
-        "attributes": {}
+        "attributes": {
+          "path": "/"
+        }
       }
     ],
     "headers": [
@@ -90,7 +106,9 @@ const content = {
     "**/.expo/**",
     "**/.vercel/**",
     "**/.turbo/**",
-    "**/.tanstack/**"
+    "**/.tanstack/**",
+    "**/.output/**",
+    "**/.svelte-kit/**"
   ],
   "watch": true
 };
@@ -117,6 +135,8 @@ const build = {
     "!**/.vercel/**",
     "!**/.turbo/**",
     "!**/.tanstack/**",
+    "!**/.output/**",
+    "!**/.svelte-kit/**",
     "!**/*.config.*",
     "!**/*.test.*",
     "!**/*.spec.*",
@@ -138,7 +158,5 @@ const compiler = {
   "noMetadata": false,
   "saveComponents": false
 };
-const configuration = { internationalization, routing, editor, log, system, content, ai, dictionary, build, compiler };
 
-export { internationalization, routing, editor, log, system, content, ai, dictionary, build, compiler, configuration };
-export default configuration;
+export { internationalization, routing, editor, log, system, content, ai, dictionary, build, compiler };

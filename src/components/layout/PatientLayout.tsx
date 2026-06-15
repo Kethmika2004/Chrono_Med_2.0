@@ -15,6 +15,8 @@ import {
 } from 'lucide-react';
 import { useState } from 'react';
 import { useAuthStore } from '@/store/authStore';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
+import { useIntlayer } from 'react-intlayer';
 
 const navigation = [
   { name: 'Dashboard', href: '/patient/dashboard', icon: LayoutDashboard },
@@ -31,6 +33,29 @@ export default function PatientLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const location = useLocation();
   const { profile, signOut } = useAuthStore();
+  const {
+    dashboard,
+    bookAppointment,
+    myAppointments,
+    queueTracker,
+    documents,
+    healthRecord,
+    notifications,
+    settings,
+    signOut: signOutLabel,
+    viewNotifications
+  } = useIntlayer('patient-layout');
+
+  const navigationTranslationMap: Record<string, string> = {
+    'Dashboard': dashboard,
+    'Book Appointment': bookAppointment,
+    'My Appointments': myAppointments,
+    'Queue Tracker': queueTracker,
+    'Documents': documents,
+    'Health Record': healthRecord,
+    'Notifications': notifications,
+    'Settings': settings,
+  };
 
   return (
     <div className="min-h-screen bg-slate-50 flex">
@@ -66,6 +91,7 @@ export default function PatientLayout() {
           <nav className="flex-1 px-4 py-4 space-y-1 overflow-y-auto">
             {navigation.map((item) => {
               const isActive = location.pathname.startsWith(item.href);
+              const displayName = navigationTranslationMap[item.name] || item.name;
               return (
                 <Link
                   key={item.name}
@@ -78,7 +104,7 @@ export default function PatientLayout() {
                   `}
                 >
                   <item.icon className={`mr-3 w-5 h-5 ${isActive ? 'text-teal-700' : 'text-slate-400'}`} />
-                  {item.name}
+                  {displayName}
                 </Link>
               );
             })}
@@ -90,7 +116,7 @@ export default function PatientLayout() {
               className="flex items-center w-full px-3 py-2.5 text-sm font-medium text-red-600 rounded-lg hover:bg-red-50 transition-colors"
             >
               <LogOut className="mr-3 w-5 h-5" />
-              Sign Out
+              {signOutLabel}
             </button>
           </div>
         </div>
@@ -108,8 +134,10 @@ export default function PatientLayout() {
             </button>
 
             <div className="flex items-center gap-4 ml-auto">
+              <LanguageSwitcher />
+
               <Link to="/patient/notifications" className="relative p-2 text-slate-400 hover:text-slate-500 rounded-full hover:bg-slate-100 transition-colors">
-                <span className="sr-only">View notifications</span>
+                <span className="sr-only">{viewNotifications}</span>
                 <Bell className="w-6 h-6" />
                 <span className="absolute top-1.5 right-1.5 block w-2.5 h-2.5 rounded-full bg-red-500 ring-2 ring-white" />
               </Link>

@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { AlertCircle, Loader2 } from 'lucide-react';
+import { useIntlayer } from 'react-intlayer';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -15,6 +16,19 @@ export default function Login() {
   
   const navigate = useNavigate();
   const { setProfile } = useAuthStore();
+  const {
+    title,
+    subtitle,
+    emailLabel,
+    emailPlaceholder,
+    passwordLabel,
+    passwordPlaceholder,
+    forgotPassword,
+    signInButton,
+    signingIn,
+    dontHaveAccount,
+    registerLink
+  } = useIntlayer('login');
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -58,9 +72,9 @@ export default function Login() {
   return (
     <Card className="w-full border-0 shadow-none">
       <CardHeader className="space-y-1">
-        <CardTitle className="text-2xl text-center">Sign in to your account</CardTitle>
-        <CardDescription className="text-center">
-          Enter your email and password below to access your portal
+        <CardTitle className="text-2xl text-center">{title}</CardTitle>
+        <CardDescription className="text-center font-medium">
+          {subtitle}
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -73,12 +87,12 @@ export default function Login() {
           )}
           <div className="space-y-2">
             <label className="text-sm font-medium leading-none" htmlFor="email">
-              Email
+              {emailLabel}
             </label>
             <Input 
               id="email" 
               type="email" 
-              placeholder="name@example.com" 
+              placeholder={emailPlaceholder} 
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -87,15 +101,16 @@ export default function Login() {
           <div className="space-y-2">
             <div className="flex items-center justify-between">
               <label className="text-sm font-medium leading-none" htmlFor="password">
-                Password
+                {passwordLabel}
               </label>
-              <Link to="/auth/forgot-password" className="text-sm text-primary hover:underline">
-                Forgot password?
+              <Link to="/auth/forgot-password" className="text-sm text-primary hover:underline font-medium">
+                {forgotPassword}
               </Link>
             </div>
             <Input 
               id="password" 
               type="password"
+              placeholder={passwordPlaceholder}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -105,19 +120,19 @@ export default function Login() {
             {loading ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Signing in...
+                {signingIn}
               </>
             ) : (
-              'Sign In'
+              signInButton
             )}
           </Button>
         </form>
       </CardContent>
       <CardFooter className="flex justify-center">
-        <div className="text-sm text-gray-500">
-          Don't have an account?{' '}
+        <div className="text-sm text-gray-500 font-medium">
+          {dontHaveAccount}{' '}
           <Link to="/auth/register" className="text-primary font-semibold hover:underline">
-            Register here
+            {registerLink}
           </Link>
         </div>
       </CardFooter>

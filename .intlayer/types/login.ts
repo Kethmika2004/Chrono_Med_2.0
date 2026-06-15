@@ -1,0 +1,142 @@
+/* eslint-disable */
+export default {
+  "key": "login",
+  "content": {
+    "nodeType": "translation",
+    "translation": {
+      "en": {
+        "title": "Sign in to your account",
+        "subtitle": "Enter your email and password below to access your portal",
+        "emailLabel": "Email",
+        "emailPlaceholder": "name@example.com",
+        "passwordLabel": "Password",
+        "passwordPlaceholder": "••••••••",
+        "forgotPassword": "Forgot password?",
+        "signInButton": "Sign In",
+        "signingIn": "Signing in...",
+        "dontHaveAccount": "Don't have an account?",
+        "registerLink": "Register here"
+      },
+      "si": {
+        "title": "ඔබගේ ගිණුමට ඇතුල් වන්න",
+        "subtitle": "ඔබගේ ද්වාරයට පිවිසීමට විද්‍යුත් තැපෑල සහ මුරපදය ඇතුළත් කරන්න",
+        "emailLabel": "විද්‍යුත් තැපෑල",
+        "emailPlaceholder": "name@example.com",
+        "passwordLabel": "මුරපදය",
+        "passwordPlaceholder": "••••••••",
+        "forgotPassword": "මුරපදය අමතකද?",
+        "signInButton": "ඇතුල් වන්න",
+        "signingIn": "ඇතුල් වෙමින්...",
+        "dontHaveAccount": "ගිණුමක් නොමැතිද?",
+        "registerLink": "මෙහි ලියාපදිංචි වන්න"
+      },
+      "ta": {
+        "title": "உங்கள் கணக்கில் உள்நுழையவும்",
+        "subtitle": "உங்கள் போர்ட்டலை அணுக உங்கள் மின்னஞ்சல் மற்றும் கடவுச்சொல்லை உள்ளிடவும்",
+        "emailLabel": "மின்னஞ்சல்",
+        "emailPlaceholder": "name@example.com",
+        "passwordLabel": "கடவுச்சொல்",
+        "passwordPlaceholder": "••••••••",
+        "forgotPassword": "கடவுச்சொல் மறந்துவிட்டதா?",
+        "signInButton": "உள்நுழைக",
+        "signingIn": "உள்நுழைகிறது...",
+        "dontHaveAccount": "கணக்கு இல்லையா?",
+        "registerLink": "இங்கே பதிவு කරන්න"
+      },
+      "hi": {
+        "title": "अपने खाते में साइन इन करें",
+        "subtitle": "अपने पोर्टल तक पहुँचने के लिए नीचे अपना ईमेल और पासवर्ड दर्ज करें",
+        "emailLabel": "ईमेल",
+        "emailPlaceholder": "name@example.com",
+        "passwordLabel": "पासवर्ड",
+        "passwordPlaceholder": "••••••••",
+        "forgotPassword": "पासवर्ड भूल गए?",
+        "signInButton": "साइन इन करें",
+        "signingIn": "साइन इन हो रहा है...",
+        "dontHaveAccount": "खाता नहीं है?",
+        "registerLink": "यहाँ पंजीकरण करें"
+      },
+      "fr": {
+        "title": "Connectez-vous à votre compte",
+        "subtitle": "Entrez votre adresse e-mail et votre mot de passe ci-dessous pour accéder à votre portail",
+        "emailLabel": "E-mail",
+        "emailPlaceholder": "name@example.com",
+        "passwordLabel": "Mot de passe",
+        "passwordPlaceholder": "••••••••",
+        "forgotPassword": "Mot de passe oublié ?",
+        "signInButton": "Se connecter",
+        "signingIn": "Connexion...",
+        "dontHaveAccount": "Vous n'avez pas de compte ?",
+        "registerLink": "S'inscrire ici"
+      },
+      "de": {
+        "title": "Melden Sie sich bei Ihrem Konto an",
+        "subtitle": "Geben Sie unten Ihre E-Mail-Adresse und Ihr Passwort ein, um auf Ihr Portal zuzugreifen",
+        "emailLabel": "E-Mail",
+        "emailPlaceholder": "name@example.com",
+        "passwordLabel": "Passwort",
+        "passwordPlaceholder": "••••••••",
+        "forgotPassword": "Passwort vergessen?",
+        "signInButton": "Anmelden",
+        "signingIn": "Anmeldung...",
+        "dontHaveAccount": "Haben Sie noch kein Konto?",
+        "registerLink": "Hier registrieren"
+      },
+      "ar": {
+        "title": "تسجيل الدخول إلى حسابك",
+        "subtitle": "أدخل بريدك الإلكتروني وكلمة المرور أدناه للوصول إلى البوابة الخاصة بك",
+        "emailLabel": "البريد الإلكتروني",
+        "emailPlaceholder": "name@example.com",
+        "passwordLabel": "كلمة المرور",
+        "passwordPlaceholder": "••••••••",
+        "forgotPassword": "هل نسيت كلمة المرور؟",
+        "signInButton": "تسجيل الدخول",
+        "signingIn": "جاري الدخول...",
+        "dontHaveAccount": "ليس لديك حساب؟",
+        "registerLink": "سجل هنا"
+      },
+      "ja": {
+        "title": "アカウントにサインイン",
+        "subtitle": "ポータルにアクセスするために、以下にメールアドレスとパスワードを入力してください",
+        "emailLabel": "メール",
+        "emailPlaceholder": "name@example.com",
+        "passwordLabel": "パスワード",
+        "passwordPlaceholder": "••••••••",
+        "forgotPassword": "パスワードをお忘れですか？",
+        "signInButton": "サインイン",
+        "signingIn": "サインイン中...",
+        "dontHaveAccount": "アカウントをお持ちでないですか？",
+        "registerLink": "こちらから登録"
+      },
+      "zh": {
+        "title": "登录您的帐户",
+        "subtitle": "在下方输入您的电子邮件和密码以访问您的门户",
+        "emailLabel": "电子邮件",
+        "emailPlaceholder": "name@example.com",
+        "passwordLabel": "密码",
+        "passwordPlaceholder": "••••••••",
+        "forgotPassword": "忘记密码？",
+        "signInButton": "登录",
+        "signingIn": "正在登录...",
+        "dontHaveAccount": "没有帐户？",
+        "registerLink": "在此注册"
+      },
+      "es": {
+        "title": "Inicie sesión en su cuenta",
+        "subtitle": "Ingrese su correo electrónico y contraseña a continuación para acceder a su portal",
+        "emailLabel": "Correo electrónico",
+        "emailPlaceholder": "name@example.com",
+        "passwordLabel": "Contraseña",
+        "passwordPlaceholder": "••••••••",
+        "forgotPassword": "¿Olvidó su contraseña?",
+        "signInButton": "Iniciar sesión",
+        "signingIn": "Iniciando sesión...",
+        "dontHaveAccount": "¿No tiene una cuenta?",
+        "registerLink": "Regístrese aquí"
+      }
+    }
+  },
+  "localIds": [
+    "login::local::src\\pages\\auth\\Login.content.ts"
+  ]
+} as const;
