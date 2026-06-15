@@ -8,6 +8,8 @@ export interface UserProfile {
   full_name: string
   is_verified: boolean
   preferred_language?: string
+  email?: string
+  contact_number?: string
   nic_or_passport?: string
   phone_number?: string
   date_of_birth?: string
@@ -76,7 +78,7 @@ export const useAuthStore = create<AuthState>((set) => ({
       set({ isLoading: false, loading: false })
     }
 
-    supabase.auth.onAuthStateChange(async (event, session) => {
+    supabase.auth.onAuthStateChange(async (_event, session) => {
       const user = session?.user ?? null
       set({ user })
       

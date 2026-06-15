@@ -1,6 +1,5 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import { getIntlayer } from 'intlayer';
 import { Locales } from 'intlayer';
 
 // This is a minimal setup for react-i18next. 
