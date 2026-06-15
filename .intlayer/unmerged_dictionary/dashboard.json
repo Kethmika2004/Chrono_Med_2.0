@@ -1,1 +1,280 @@
-[{"key":"dashboard","content":{"welcomeTitle":{"nodeType":"translation","translation":{"en":"Welcome back","si":"නැවත සාදරයෙන් පිළිගනිමු","ta":"மீண்டும் வருக","hi":"स्वागत हे","fr":"Bon retour","de":"Willkommen zurück","ar":"مرحبًا بعودتك","ja":"おかえりなさい","zh":"欢迎回来","es":"Bienvenido de nuevo"}},"welcomeSubtitle":{"nodeType":"translation","translation":{"en":"Manage your health journey, view upcoming appointments, and keep track of your medical records.","si":"ඔබගේ සෞඛ්‍ය ගමන කළමනාකරණය කරන්න, ඉදිරි හමුවීම් බලන්න, සහ සෞඛ්‍ය වාර්තා නිරීක්ෂණය කරන්න.","ta":"உங்கள் சுகாதார பயணத்தை நிர்வகிக்கவும், வரவிருக்கும் அப்பாயிண்ட்மெண்ட்களைப் பார்க்கவும் மற்றும் உங்கள் மருத்துவ பதிவுகளைக் கண்காணிக்கவும்.","hi":"अपनी स्वास्थ्य यात्रा प्रबंधित करें, आगामी अपॉइंटमेंट देखें, और अपने मेडिकल रिकॉर्ड पर नज़र रखें।","fr":"Gérez votre parcours de santé, affichez les rendez-vous à venir et suivez vos dossiers médicaux.","de":"Verwalten Sie Ihre Gesundheitsreise, sehen Sie anstehende Termine ein und behalten Sie Ihre Krankenakten im Auge.","ar":"إدارة رحلتك الصحية، وعرض المواعيد القادمة، ومتابعة سجلاتك الطبية.","ja":"健康管理、今後の予約確認、医療記録の追跡などを行います。","zh":"管理您的健康旅程，查看即将到来的预约，并记录您的医疗档案。","es":"Gestione su viaje de salud, vea sus próximas citas y realice un seguimiento de sus registros médicos."}},"bookAppointment":{"nodeType":"translation","translation":{"en":"Book Appointment","si":"වේලාවක් වෙන් කරන්න","ta":"அப்பாயிண்ட்மெண்ட் முன்பதிவு","hi":"अपॉइंटमेंट बुक करें","fr":"Prendre RDV","de":"Termin buchen","ar":"حجز موعد","ja":"予約する","zh":"预约挂号","es":"Reservar cita"}},"myAppointments":{"nodeType":"translation","translation":{"en":"My Appointments","si":"මගේ හමුවීම්","ta":"என் அப்பாயிண்ட்மெண்ட்கள்","hi":"मेरे अपॉइंटमेंट","fr":"Mes rendez-vous","de":"Meine Termine","ar":"مواعيدي","ja":"マイ予約","zh":"我的预约","es":"Mis citas"}},"queueTracker":{"nodeType":"translation","translation":{"en":"Queue Tracker","si":"පෝලිම් ට්‍රැකර්","ta":"வரிசை டிராக்கர்","hi":"कतार ट्रैकर","fr":"Suivi de file","de":"Warteschlangen-Tracker","ar":"متبع الطابور","ja":"待ち順トラッカー","zh":"排队追踪","es":"Seguimiento de cola"}},"healthRecords":{"nodeType":"translation","translation":{"en":"Health Records","si":"සෞඛ්‍ය වාර්තා","ta":"சுகாதார பதிவுகள்","hi":"स्वास्थ्य रिकॉर्ड","fr":"Dossiers de santé","de":"Gesundheitsakten","ar":"السجلات الصحية","ja":"健康記録","zh":"健康档案","es":"Registros de salud"}},"activeQueue":{"nodeType":"translation","translation":{"en":"Active Queue","si":"ක්‍රියාකාරී පෝලිම","ta":"செயலில் உள்ள வரிசை","hi":"सक्रिय कतार","fr":"File active","de":"Aktive Warteschlange","ar":"الطابور النشط","ja":"進行中の待ち順","zh":"当前排队","es":"Cola activa"}},"tokenLabel":{"nodeType":"translation","translation":{"en":"Token","si":"ටෝකන් අංකය","ta":"டோக்கன்","hi":"टोकन","fr":"Jeton","de":"Token","ar":"الرقم","ja":"トークン","zh":"号码","es":"Ficha"}},"roomLabel":{"nodeType":"translation","translation":{"en":"Room","si":"කාමරය","ta":"அறை","hi":"कमरा","fr":"Salle","de":"Raum","ar":"غرفة","ja":"部屋","zh":"诊室","es":"Consultorio"}},"estWaitTime":{"nodeType":"translation","translation":{"en":"Est. wait time","si":"ඇස්තමේන්තුගත කාලය","ta":"மதிப்பிடப்பட்ட காத்திருப்பு நேரம்","hi":"अनुमानित प्रतीक्षा समय","fr":"Attente est.","de":"Geschätzte Wartezeit","ar":"وقت الانتظار المتوقع","ja":"待ち時間目安","zh":"预计等待时间","es":"Tiempo de espera est."}},"mins":{"nodeType":"translation","translation":{"en":"mins","si":"මිනිත්තු","ta":"நிமிடங்கள்","hi":"मिनट","fr":"min","de":"Min.","ar":"دقائق","ja":"分","zh":"分钟","es":"mins"}},"patientsAhead":{"nodeType":"translation","translation":{"en":"patients ahead","si":"රෝගීන් පෝලිමේ සිටී","ta":"நோயாளிகள் முன்னால் உள்ளனர்","hi":"मरीज आगे हैं","fr":"patients devant","de":"Patienten vor Ihnen","ar":"مرضى بانتظار دورهم","ja":"人の待ち順","zh":"名患者排在前面","es":"pacientes adelante"}},"viewLiveTracker":{"nodeType":"translation","translation":{"en":"View Live Tracker","si":"සජීවී ට්‍රැකර් බලන්න","ta":"நேரடி டிராக்கரைப் பார்க்கவும்","hi":"लाइव ट्रैकर देखें","fr":"Voir le suivi en direct","de":"Live-Tracker anzeigen","ar":"عرض التتبع المباشر","ja":"ライブ追跡を表示","zh":"查看实时排队","es":"Ver seguimiento en vivo"}},"upcomingAppointments":{"nodeType":"translation","translation":{"en":"Upcoming Appointments","si":"ඉදිරි හමුවීම්","ta":"வரவிருக்கும் அப்பாயிண்ட்மெண்ட்கள்","hi":"आगामी अपॉइंटमेंट","fr":"Rendez-vous à venir","de":"Anstehende Termine","ar":"المواعيد القادمة","ja":"今後の予定","zh":"即将到来的预约","es":"Próximas citas"}},"viewAll":{"nodeType":"translation","translation":{"en":"View all","si":"සියල්ල බලන්න","ta":"அனைத்தையும் காட்டு","hi":"सभी देखें","fr":"Voir tout","de":"Alle anzeigen","ar":"عرض الكل","ja":"すべて表示","zh":"查看全部","es":"Ver todo"}},"detailsButton":{"nodeType":"translation","translation":{"en":"Details","si":"විස්තර","ta":"விவரங்கள்","hi":"विवरण","fr":"Détails","de":"Details","ar":"التفاصيل","ja":"詳細","zh":"详情","es":"Detalles"}},"notificationsTitle":{"nodeType":"translation","translation":{"en":"Notifications","si":"දැනුම්දීම්","ta":"அறிவிப்புகள்","hi":"सूचनाएं","fr":"Notifications","de":"Benachrichtigungen","ar":"الإشعارات","ja":"通知","zh":"通知","es":"Notificaciones"}},"viewAllNotifications":{"nodeType":"translation","translation":{"en":"View all notifications","si":"සියලුම දැනුම්දීම් බලන්න","ta":"அனைத்து அறிவிப்புகளையும் பார்க்கவும்","hi":"सभी सूचनाएं देखें","fr":"Voir toutes les notifications","de":"Alle Benachrichtigungen anzeigen","ar":"عرض جميع الإشعارات","ja":"すべての通知を表示","zh":"查看全部通知","es":"Ver todas las notificaciones"}}},"location":"local","localId":"dashboard::local::src\\pages\\patient\\Dashboard.content.ts","filePath":"src\\pages\\patient\\Dashboard.content.ts"}]
+[
+  {
+    "key": "dashboard",
+    "content": {
+      "welcomeTitle": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "Welcome back",
+          "si": "නැවත සාදරයෙන් පිළිගනිමු",
+          "ta": "மீண்டும் வருக",
+          "hi": "स्वागत हे",
+          "fr": "Bon retour",
+          "de": "Willkommen zurück",
+          "ar": "مرحبًا بعودتك",
+          "ja": "おかえりなさい",
+          "zh": "欢迎回来",
+          "es": "Bienvenido de nuevo"
+        }
+      },
+      "welcomeSubtitle": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "Manage your health journey, view upcoming appointments, and keep track of your medical records.",
+          "si": "ඔබගේ සෞඛ්‍ය ගමන කළමනාකරණය කරන්න, ඉදිරි හමුවීම් බලන්න, සහ සෞඛ්‍ය වාර්තා නිරීක්ෂණය කරන්න.",
+          "ta": "உங்கள் சுகாதார பயணத்தை நிர்வகிக்கவும், வரவிருக்கும் அப்பாயிண்ட்மெண்ட்களைப் பார்க்கவும் மற்றும் உங்கள் மருத்துவ பதிவுகளைக் கண்காணிக்கவும்.",
+          "hi": "अपनी स्वास्थ्य यात्रा प्रबंधित करें, आगामी अपॉइंटमेंट देखें, और अपने मेडिकल रिकॉर्ड पर नज़र रखें।",
+          "fr": "Gérez votre parcours de santé, affichez les rendez-vous à venir et suivez vos dossiers médicaux.",
+          "de": "Verwalten Sie Ihre Gesundheitsreise, sehen Sie anstehende Termine ein und behalten Sie Ihre Krankenakten im Auge.",
+          "ar": "إدارة رحلتك الصحية، وعرض المواعيد القادمة، ومتابعة سجلاتك الطبية.",
+          "ja": "健康管理、今後の予約確認、医療記録の追跡などを行います。",
+          "zh": "管理您的健康旅程，查看即将到来的预约，并记录您的医疗档案。",
+          "es": "Gestione su viaje de salud, vea sus próximas citas y realice un seguimiento de sus registros médicos."
+        }
+      },
+      "bookAppointment": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "Book Appointment",
+          "si": "වේලාවක් වෙන් කරන්න",
+          "ta": "அப்பாயிண்ட்மெண்ட் முன்பதிவு",
+          "hi": "अपॉइंटमेंट बुक करें",
+          "fr": "Prendre RDV",
+          "de": "Termin buchen",
+          "ar": "حجز موعد",
+          "ja": "予約する",
+          "zh": "预约挂号",
+          "es": "Reservar cita"
+        }
+      },
+      "myAppointments": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "My Appointments",
+          "si": "මගේ හමුවීම්",
+          "ta": "என் அப்பாயிண்ட்மெண்ட்கள்",
+          "hi": "मेरे अपॉइंटमेंट",
+          "fr": "Mes rendez-vous",
+          "de": "Meine Termine",
+          "ar": "مواعيدي",
+          "ja": "マイ予約",
+          "zh": "我的预约",
+          "es": "Mis citas"
+        }
+      },
+      "queueTracker": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "Queue Tracker",
+          "si": "පෝලිම් ට්‍රැකර්",
+          "ta": "வரிசை டிராக்கர்",
+          "hi": "कतार ट्रैकर",
+          "fr": "Suivi de file",
+          "de": "Warteschlangen-Tracker",
+          "ar": "متبع الطابور",
+          "ja": "待ち順トラッカー",
+          "zh": "排队追踪",
+          "es": "Seguimiento de cola"
+        }
+      },
+      "healthRecords": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "Health Records",
+          "si": "සෞඛ්‍ය වාර්තා",
+          "ta": "சுகாதார பதிவுகள்",
+          "hi": "स्वास्थ्य रिकॉर्ड",
+          "fr": "Dossiers de santé",
+          "de": "Gesundheitsakten",
+          "ar": "السجلات الصحية",
+          "ja": "健康記録",
+          "zh": "健康档案",
+          "es": "Registros de salud"
+        }
+      },
+      "activeQueue": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "Active Queue",
+          "si": "ක්‍රියාකාරී පෝලිම",
+          "ta": "செயலில் உள்ள வரிசை",
+          "hi": "सक्रिय कतार",
+          "fr": "File active",
+          "de": "Aktive Warteschlange",
+          "ar": "الطابور النشط",
+          "ja": "進行中の待ち順",
+          "zh": "当前排队",
+          "es": "Cola activa"
+        }
+      },
+      "tokenLabel": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "Token",
+          "si": "ටෝකන් අංකය",
+          "ta": "டோக்கன்",
+          "hi": "टोकन",
+          "fr": "Jeton",
+          "de": "Token",
+          "ar": "الرقم",
+          "ja": "トークン",
+          "zh": "号码",
+          "es": "Ficha"
+        }
+      },
+      "roomLabel": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "Room",
+          "si": "කාමරය",
+          "ta": "அறை",
+          "hi": "कमरा",
+          "fr": "Salle",
+          "de": "Raum",
+          "ar": "غرفة",
+          "ja": "部屋",
+          "zh": "诊室",
+          "es": "Consultorio"
+        }
+      },
+      "estWaitTime": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "Est. wait time",
+          "si": "ඇස්තමේන්තුගත කාලය",
+          "ta": "மதிப்பிடப்பட்ட காத்திருப்பு நேரம்",
+          "hi": "अनुमानित प्रतीक्षा समय",
+          "fr": "Attente est.",
+          "de": "Geschätzte Wartezeit",
+          "ar": "وقت الانتظار المتوقع",
+          "ja": "待ち時間目安",
+          "zh": "预计等待时间",
+          "es": "Tiempo de espera est."
+        }
+      },
+      "mins": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "mins",
+          "si": "මිනිත්තු",
+          "ta": "நிமிடங்கள்",
+          "hi": "मिनट",
+          "fr": "min",
+          "de": "Min.",
+          "ar": "دقائق",
+          "ja": "分",
+          "zh": "分钟",
+          "es": "mins"
+        }
+      },
+      "patientsAhead": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "patients ahead",
+          "si": "රෝගීන් පෝලිමේ සිටී",
+          "ta": "நோயாளிகள் முன்னால் உள்ளனர்",
+          "hi": "मरीज आगे हैं",
+          "fr": "patients devant",
+          "de": "Patienten vor Ihnen",
+          "ar": "مرضى بانتظار دورهم",
+          "ja": "人の待ち順",
+          "zh": "名患者排在前面",
+          "es": "pacientes adelante"
+        }
+      },
+      "viewLiveTracker": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "View Live Tracker",
+          "si": "සජීවී ට්‍රැකර් බලන්න",
+          "ta": "நேரடி டிராக்கரைப் பார்க்கவும்",
+          "hi": "लाइव ट्रैकर देखें",
+          "fr": "Voir le suivi en direct",
+          "de": "Live-Tracker anzeigen",
+          "ar": "عرض التتبع المباشر",
+          "ja": "ライブ追跡を表示",
+          "zh": "查看实时排队",
+          "es": "Ver seguimiento en vivo"
+        }
+      },
+      "upcomingAppointments": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "Upcoming Appointments",
+          "si": "ඉදිරි හමුවීම්",
+          "ta": "வரவிருக்கும் அப்பாயிண்ட்மெண்ட்கள்",
+          "hi": "आगामी अपॉइंटमेंट",
+          "fr": "Rendez-vous à venir",
+          "de": "Anstehende Termine",
+          "ar": "المواعيد القادمة",
+          "ja": "今後の予定",
+          "zh": "即将到来的预约",
+          "es": "Próximas citas"
+        }
+      },
+      "viewAll": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "View all",
+          "si": "සියල්ල බලන්න",
+          "ta": "அனைத்தையும் காட்டு",
+          "hi": "सभी देखें",
+          "fr": "Voir tout",
+          "de": "Alle anzeigen",
+          "ar": "عرض الكل",
+          "ja": "すべて表示",
+          "zh": "查看全部",
+          "es": "Ver todo"
+        }
+      },
+      "detailsButton": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "Details",
+          "si": "විස්තර",
+          "ta": "விவரங்கள்",
+          "hi": "विवरण",
+          "fr": "Détails",
+          "de": "Details",
+          "ar": "التفاصيل",
+          "ja": "詳細",
+          "zh": "详情",
+          "es": "Detalles"
+        }
+      },
+      "notificationsTitle": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "Notifications",
+          "si": "දැනුම්දීම්",
+          "ta": "அறிவிப்புகள்",
+          "hi": "सूचनाएं",
+          "fr": "Notifications",
+          "de": "Benachrichtigungen",
+          "ar": "الإشعارات",
+          "ja": "通知",
+          "zh": "通知",
+          "es": "Notificaciones"
+        }
+      },
+      "viewAllNotifications": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "View all notifications",
+          "si": "සියලුම දැනුම්දීම් බලන්න",
+          "ta": "அனைத்து அறிவிப்புகளையும் பார்க்கவும்",
+          "hi": "सभी सूचनाएं देखें",
+          "fr": "Voir toutes les notifications",
+          "de": "Alle Benachrichtigungen anzeigen",
+          "ar": "عرض جميع الإشعارات",
+          "ja": "すべての通知を表示",
+          "zh": "查看全部通知",
+          "es": "Ver todas las notificaciones"
+        }
+      }
+    },
+    "location": "local",
+    "localId": "dashboard::local::src\\pages\\patient\\Dashboard.content.ts",
+    "filePath": "src\\pages\\patient\\Dashboard.content.ts"
+  }
+]

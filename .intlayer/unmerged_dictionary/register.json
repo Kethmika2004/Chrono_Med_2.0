@@ -1,1 +1,310 @@
-[{"key":"register","content":{"title":{"nodeType":"translation","translation":{"en":"Create an account","si":"ගිණුමක් සාදන්න","ta":"கணக்கை உருவாக்குங்கள்","hi":"खाता बनाएँ","fr":"Créer un compte","de":"Konto erstellen","ar":"إنشاء حساب","ja":"アカウントを作成","zh":"创建帐户","es":"Crear una cuenta"}},"step1Subtitle":{"nodeType":"translation","translation":{"en":"Select your account type to begin","si":"ආරම්භ කිරීමට ඔබගේ ගિණුම් වර්ගය තෝරන්න","ta":"தொடங்குவதற்கு உங்கள் கணக்கு வகையைத் தேர்ந்தெடுக்கவும்","hi":"शुरू करने के लिए अपना खाता प्रकार चुनें","fr":"Sélectionnez votre type de compte pour commencer","de":"Wählen Sie Ihren Kontotyp aus, um zu beginnen","ar":"اختر نوع حسابك للبدء","ja":"開始するにはアカウントの種類を選択してください","zh":"选择您的帐户类型以开始","es":"Seleccione su tipo de cuenta para comenzar"}},"step2Subtitle":{"nodeType":"translation","translation":{"en":"Fill in your details to register","si":"ලියාපදිංචි වීමට ඔබගේ තොරතුරු ඇතුළත් කරන්න","ta":"பதிவு செய்ய உங்கள் விவரங்களை நிரப்பவும்","hi":"पंजीकरण करने के लिए अपना विवरण भरें","fr":"Remplissez vos coordonnées pour vous inscrire","de":"Füllen Sie Ihre Daten aus, um sich zu registrieren","ar":"املأ التفاصيل الخاصة بك للتسجيل","ja":"登録のために詳細を入力してください","zh":"填写您的详细信息以进行注册","es":"Complete sus datos para registrarse"}},"patientRole":{"nodeType":"translation","translation":{"en":"Patient","si":"රෝගියා","ta":"நோயாளி","hi":"मरीज","fr":"Patient","de":"Patient","ar":"المريض","ja":"患者","zh":"患者","es":"Paciente"}},"patientDesc":{"nodeType":"translation","translation":{"en":"Book appointments and manage health records","si":"වේලාවන් වෙන් කරවා ගෙන සෞඛ්‍ය වාර්තා කළමනාකරණය කරන්න","ta":"அப்பாயிண்ட்மெண்ட்களை முன்பதிவு செய்து சுகாதார பதிவுகளை நிர்வகிக்கவும்","hi":"अपॉइंटमेंट बुक करें और स्वास्थ्य रिकॉर्ड प्रबंधित करें","fr":"Prenez des rendez-vous et gérez vos dossiers de santé","de":"Termine buchen und Krankenakten verwalten","ar":"حجز المواعيد وإدارة السجلات الصحية","ja":"予約を取り、健康記録を管理します","zh":"预约并管理健康记录","es":"Reserve citas y gestione registros de salud"}},"doctorRole":{"nodeType":"translation","translation":{"en":"Doctor","si":"වෛද්‍යවරයා","ta":"மருத்துவர்","hi":"डॉक्टर","fr":"Médecin","de":"Arzt","ar":"طبيب","ja":"医師","zh":"医生","es":"Médico"}},"doctorDesc":{"nodeType":"translation","translation":{"en":"Manage sessions, appointments, and patients","si":"සැසි, වේලාවන් සහ රෝගීන් කළමනාකරණය කරන්න","ta":"அமர்வுகள், அப்பாயிண்ட்மெண்ட்கள் மற்றும் நோயாளிகளை நிர்வகிக்கவும்","hi":"सत्र, अपॉइंटमेंट और मरीजों को प्रबंधित करें","fr":"Gérez les sessions, les rendez-vous et les patients","de":"Sitzungen, Termine und Patienten verwalten","ar":"إدارة الجلسات والمواعيد والمرضى","ja":"セッション、予約、患者を管理します","zh":"管理就诊、预约和患者","es":"Gestione sesiones, citas y pacientes"}},"hospitalRole":{"nodeType":"translation","translation":{"en":"Hospital / Clinic","si":"රෝහල / සායනය","ta":"மருத்துவமனை / கிளினிக்","hi":"अस्पताल / क्लिनिक","fr":"Hôpital / Clinique","de":"Krankenhaus / Klinik","ar":"مستشفى / عيادة","ja":"病院 / クリニック","zh":"医院 / 诊所","es":"Hospital / Clínica"}},"hospitalDesc":{"nodeType":"translation","translation":{"en":"Manage doctors, departments, and analytics","si":"වෛද්‍යවරුන්, දෙපාර්තමේන්තු සහ විශ්ලේෂණ කළමනාකරණය කරන්න","ta":"மருத்துவர்கள், துறைகள் மற்றும் பகுப்பாய்வுகளை நிர்வகிக்கவும்","hi":"डॉक्टरों, विभागों और विश्लेषणों को प्रबंधित करें","fr":"Gérez les médecins, les départements et les analyses","de":"Ärzte, Abteilungen und Analysen verwalten","ar":"إدارة الأطباء والأقسام والتحليلات","ja":"医師、部門、分析を管理します","zh":"管理医生、科室和数据分析","es":"Gestione médicos, departamentos y análisis"}},"fullNameLabel":{"nodeType":"translation","translation":{"en":"Full Name","si":"සම්පූර්ණ නම","ta":"முழு பெயர்","hi":"पूरा नाम","fr":"Nom complet","de":"Vollständiger Name","ar":"الاسم الكامل","ja":"フルネーム","zh":"姓名","es":"Nombre completo"}},"fullNameHospitalLabel":{"nodeType":"translation","translation":{"en":"Full Name / Hospital Name","si":"සම්පූර්ණ නම / රෝහලේ නම","ta":"முழு பெயர் / மருத்துவமனையின் பெயர்","hi":"पूरा नाम / अस्पताल का नाम","fr":"Nom complet / Nom de l'hôpital","de":"Vollständiger Name / Name des Krankenhauses","ar":"الاسم الكامل / اسم المستشفى","ja":"フルネーム / 病院名","zh":"完整姓名 / 医院名称","es":"Nombre completo / Nombre del hospital"}},"emailLabel":{"nodeType":"translation","translation":{"en":"Email Address","si":"විද්‍යුත් තැපෑල","ta":"மின்னஞ்சல் முகவரி","hi":"ईमेल पता","fr":"Adresse e-mail","de":"E-Mail-Adresse","ar":"البريد الإلكتروني","ja":"メールアドレス","zh":"电子邮件地址","es":"Correo electrónico"}},"passwordLabel":{"nodeType":"translation","translation":{"en":"Password","si":"මුරපදය","ta":"கடவுச்சொல்","hi":"पासवर्ड","fr":"Mot de passe","de":"Passwort","ar":"كلمة المرور","ja":"パスワード","zh":"密码","es":"Contraseña"}},"contactLabel":{"nodeType":"translation","translation":{"en":"Contact Number","si":"දුරකථන අංකය","ta":"தொடர்பு எண்","hi":"संपर्क संख्या","fr":"Numéro de contact","de":"Kontaktnummer","ar":"رقم الاتصال","ja":"連絡先番号","zh":"联系电话","es":"Número de contacto"}},"licenseLabel":{"nodeType":"translation","translation":{"en":"Medical License Number","si":"වෛද්‍ය බලපත්‍ර අංකය","ta":"மருத்துவ உரிம எண்","hi":"चिकित्सा लाइसेंस संख्या","fr":"Numéro de licence médicale","de":"Ärztliche Lizenznummer","ar":"رقم الترخيص الطبي","ja":"医師免許番号","zh":"医疗执业许可证号","es":"Número de licencia médica"}},"registrationLabel":{"nodeType":"translation","translation":{"en":"Registration Number","si":"ලියාපදිංචි අංකය","ta":"பதிவு எண்","hi":"पंजीकरण संख्या","fr":"Numéro d'enregistrement","de":"Registrierungsnummer","ar":"رقم التسجيل","ja":"登録番号","zh":"注册号","es":"Número de registro"}},"backButton":{"nodeType":"translation","translation":{"en":"Back","si":"ආපසු","ta":"பின்னால்","hi":"पीछे","fr":"Retour","de":"Zurück","ar":"رجوع","ja":"戻る","zh":"返回","es":"Atrás"}},"registerButton":{"nodeType":"translation","translation":{"en":"Register","si":"ලියාපදිංචි වන්න","ta":"பதிவு செய்க","hi":"पंजीकरण करें","fr":"S'inscrire","de":"Registrieren","ar":"تسجيل","ja":"登録する","zh":"注册","es":"Registrarse"}},"alreadyHaveAccount":{"nodeType":"translation","translation":{"en":"Already have an account?","si":"දැනටමත් ගිණුමක් තිබේද?","ta":"ஏற்கனவே கணக்கு உள்ளதா?","hi":"पहले से ही एक खाता है?","fr":"Vous avez déjà un compte ?","de":"Haben Sie bereits ein Konto?","ar":"هل لديك حساب بالفعل؟","ja":"すでにアカウントをお持ちですか？","zh":"已经有帐户？","es":"¿Ya tiene una cuenta?"}},"signInLink":{"nodeType":"translation","translation":{"en":"Sign in","si":"ඇතුල් වන්න","ta":"உள்நுழைக","hi":"साइन इन करें","fr":"Se connecter","de":"Anmelden","ar":"تسجيل الدخول","ja":"サインイン","zh":"登录","es":"Iniciar sesión"}}},"location":"local","localId":"register::local::src\\pages\\auth\\Register.content.ts","filePath":"src\\pages\\auth\\Register.content.ts"}]
+[
+  {
+    "key": "register",
+    "content": {
+      "title": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "Create an account",
+          "si": "ගිණුමක් සාදන්න",
+          "ta": "கணக்கை உருவாக்குங்கள்",
+          "hi": "खाता बनाएँ",
+          "fr": "Créer un compte",
+          "de": "Konto erstellen",
+          "ar": "إنشاء حساب",
+          "ja": "アカウントを作成",
+          "zh": "创建帐户",
+          "es": "Crear una cuenta"
+        }
+      },
+      "step1Subtitle": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "Select your account type to begin",
+          "si": "ආරම්භ කිරීමට ඔබගේ ගિණුම් වර්ගය තෝරන්න",
+          "ta": "தொடங்குவதற்கு உங்கள் கணக்கு வகையைத் தேர்ந்தெடுக்கவும்",
+          "hi": "शुरू करने के लिए अपना खाता प्रकार चुनें",
+          "fr": "Sélectionnez votre type de compte pour commencer",
+          "de": "Wählen Sie Ihren Kontotyp aus, um zu beginnen",
+          "ar": "اختر نوع حسابك للبدء",
+          "ja": "開始するにはアカウントの種類を選択してください",
+          "zh": "选择您的帐户类型以开始",
+          "es": "Seleccione su tipo de cuenta para comenzar"
+        }
+      },
+      "step2Subtitle": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "Fill in your details to register",
+          "si": "ලියාපදිංචි වීමට ඔබගේ තොරතුරු ඇතුළත් කරන්න",
+          "ta": "பதிவு செய்ய உங்கள் விவரங்களை நிரப்பவும்",
+          "hi": "पंजीकरण करने के लिए अपना विवरण भरें",
+          "fr": "Remplissez vos coordonnées pour vous inscrire",
+          "de": "Füllen Sie Ihre Daten aus, um sich zu registrieren",
+          "ar": "املأ التفاصيل الخاصة بك للتسجيل",
+          "ja": "登録のために詳細を入力してください",
+          "zh": "填写您的详细信息以进行注册",
+          "es": "Complete sus datos para registrarse"
+        }
+      },
+      "patientRole": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "Patient",
+          "si": "රෝගියා",
+          "ta": "நோயாளி",
+          "hi": "मरीज",
+          "fr": "Patient",
+          "de": "Patient",
+          "ar": "المريض",
+          "ja": "患者",
+          "zh": "患者",
+          "es": "Paciente"
+        }
+      },
+      "patientDesc": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "Book appointments and manage health records",
+          "si": "වේලාවන් වෙන් කරවා ගෙන සෞඛ්‍ය වාර්තා කළමනාකරණය කරන්න",
+          "ta": "அப்பாயிண்ட்மெண்ட்களை முன்பதிவு செய்து சுகாதார பதிவுகளை நிர்வகிக்கவும்",
+          "hi": "अपॉइंटमेंट बुक करें और स्वास्थ्य रिकॉर्ड प्रबंधित करें",
+          "fr": "Prenez des rendez-vous et gérez vos dossiers de santé",
+          "de": "Termine buchen und Krankenakten verwalten",
+          "ar": "حجز المواعيد وإدارة السجلات الصحية",
+          "ja": "予約を取り、健康記録を管理します",
+          "zh": "预约并管理健康记录",
+          "es": "Reserve citas y gestione registros de salud"
+        }
+      },
+      "doctorRole": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "Doctor",
+          "si": "වෛද්‍යවරයා",
+          "ta": "மருத்துவர்",
+          "hi": "डॉक्टर",
+          "fr": "Médecin",
+          "de": "Arzt",
+          "ar": "طبيب",
+          "ja": "医師",
+          "zh": "医生",
+          "es": "Médico"
+        }
+      },
+      "doctorDesc": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "Manage sessions, appointments, and patients",
+          "si": "සැසි, වේලාවන් සහ රෝගීන් කළමනාකරණය කරන්න",
+          "ta": "அமர்வுகள், அப்பாயிண்ட்மெண்ட்கள் மற்றும் நோயாளிகளை நிர்வகிக்கவும்",
+          "hi": "सत्र, अपॉइंटमेंट और मरीजों को प्रबंधित करें",
+          "fr": "Gérez les sessions, les rendez-vous et les patients",
+          "de": "Sitzungen, Termine und Patienten verwalten",
+          "ar": "إدارة الجلسات والمواعيد والمرضى",
+          "ja": "セッション、予約、患者を管理します",
+          "zh": "管理就诊、预约和患者",
+          "es": "Gestione sesiones, citas y pacientes"
+        }
+      },
+      "hospitalRole": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "Hospital / Clinic",
+          "si": "රෝහල / සායනය",
+          "ta": "மருத்துவமனை / கிளினிக்",
+          "hi": "अस्पताल / क्लिनिक",
+          "fr": "Hôpital / Clinique",
+          "de": "Krankenhaus / Klinik",
+          "ar": "مستشفى / عيادة",
+          "ja": "病院 / クリニック",
+          "zh": "医院 / 诊所",
+          "es": "Hospital / Clínica"
+        }
+      },
+      "hospitalDesc": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "Manage doctors, departments, and analytics",
+          "si": "වෛද්‍යවරුන්, දෙපාර්තමේන්තු සහ විශ්ලේෂණ කළමනාකරණය කරන්න",
+          "ta": "மருத்துவர்கள், துறைகள் மற்றும் பகுப்பாய்வுகளை நிர்வகிக்கவும்",
+          "hi": "डॉक्टरों, विभागों और विश्लेषणों को प्रबंधित करें",
+          "fr": "Gérez les médecins, les départements et les analyses",
+          "de": "Ärzte, Abteilungen und Analysen verwalten",
+          "ar": "إدارة الأطباء والأقسام والتحليلات",
+          "ja": "医師、部門、分析を管理します",
+          "zh": "管理医生、科室和数据分析",
+          "es": "Gestione médicos, departamentos y análisis"
+        }
+      },
+      "fullNameLabel": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "Full Name",
+          "si": "සම්පූර්ණ නම",
+          "ta": "முழு பெயர்",
+          "hi": "पूरा नाम",
+          "fr": "Nom complet",
+          "de": "Vollständiger Name",
+          "ar": "الاسم الكامل",
+          "ja": "フルネーム",
+          "zh": "姓名",
+          "es": "Nombre completo"
+        }
+      },
+      "fullNameHospitalLabel": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "Full Name / Hospital Name",
+          "si": "සම්පූර්ණ නම / රෝහලේ නම",
+          "ta": "முழு பெயர் / மருத்துவமனையின் பெயர்",
+          "hi": "पूरा नाम / अस्पताल का नाम",
+          "fr": "Nom complet / Nom de l'hôpital",
+          "de": "Vollständiger Name / Name des Krankenhauses",
+          "ar": "الاسم الكامل / اسم المستشفى",
+          "ja": "フルネーム / 病院名",
+          "zh": "完整姓名 / 医院名称",
+          "es": "Nombre completo / Nombre del hospital"
+        }
+      },
+      "emailLabel": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "Email Address",
+          "si": "විද්‍යුත් තැපෑල",
+          "ta": "மின்னஞ்சல் முகவரி",
+          "hi": "ईमेल पता",
+          "fr": "Adresse e-mail",
+          "de": "E-Mail-Adresse",
+          "ar": "البريد الإلكتروني",
+          "ja": "メールアドレス",
+          "zh": "电子邮件地址",
+          "es": "Correo electrónico"
+        }
+      },
+      "passwordLabel": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "Password",
+          "si": "මුරපදය",
+          "ta": "கடவுச்சொல்",
+          "hi": "पासवर्ड",
+          "fr": "Mot de passe",
+          "de": "Passwort",
+          "ar": "كلمة المرور",
+          "ja": "パスワード",
+          "zh": "密码",
+          "es": "Contraseña"
+        }
+      },
+      "contactLabel": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "Contact Number",
+          "si": "දුරකථන අංකය",
+          "ta": "தொடர்பு எண்",
+          "hi": "संपर्क संख्या",
+          "fr": "Numéro de contact",
+          "de": "Kontaktnummer",
+          "ar": "رقم الاتصال",
+          "ja": "連絡先番号",
+          "zh": "联系电话",
+          "es": "Número de contacto"
+        }
+      },
+      "licenseLabel": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "Medical License Number",
+          "si": "වෛද්‍ය බලපත්‍ර අංකය",
+          "ta": "மருத்துவ உரிம எண்",
+          "hi": "चिकित्सा लाइसेंस संख्या",
+          "fr": "Numéro de licence médicale",
+          "de": "Ärztliche Lizenznummer",
+          "ar": "رقم الترخيص الطبي",
+          "ja": "医師免許番号",
+          "zh": "医疗执业许可证号",
+          "es": "Número de licencia médica"
+        }
+      },
+      "registrationLabel": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "Registration Number",
+          "si": "ලියාපදිංචි අංකය",
+          "ta": "பதிவு எண்",
+          "hi": "पंजीकरण संख्या",
+          "fr": "Numéro d'enregistrement",
+          "de": "Registrierungsnummer",
+          "ar": "رقم التسجيل",
+          "ja": "登録番号",
+          "zh": "注册号",
+          "es": "Número de registro"
+        }
+      },
+      "backButton": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "Back",
+          "si": "ආපසු",
+          "ta": "பின்னால்",
+          "hi": "पीछे",
+          "fr": "Retour",
+          "de": "Zurück",
+          "ar": "رجوع",
+          "ja": "戻る",
+          "zh": "返回",
+          "es": "Atrás"
+        }
+      },
+      "registerButton": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "Register",
+          "si": "ලියාපදිංචි වන්න",
+          "ta": "பதிவு செய்க",
+          "hi": "पंजीकरण करें",
+          "fr": "S'inscrire",
+          "de": "Registrieren",
+          "ar": "تسجيل",
+          "ja": "登録する",
+          "zh": "注册",
+          "es": "Registrarse"
+        }
+      },
+      "alreadyHaveAccount": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "Already have an account?",
+          "si": "දැනටමත් ගිණුමක් තිබේද?",
+          "ta": "ஏற்கனவே கணக்கு உள்ளதா?",
+          "hi": "पहले से ही एक खाता है?",
+          "fr": "Vous avez déjà un compte ?",
+          "de": "Haben Sie bereits ein Konto?",
+          "ar": "هل لديك حساب بالفعل؟",
+          "ja": "すでにアカウントをお持ちですか？",
+          "zh": "已经有帐户？",
+          "es": "¿Ya tiene una cuenta?"
+        }
+      },
+      "signInLink": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "Sign in",
+          "si": "ඇතුල් වන්න",
+          "ta": "உள்நுழைக",
+          "hi": "साइन इन करें",
+          "fr": "Se connecter",
+          "de": "Anmelden",
+          "ar": "تسجيل الدخول",
+          "ja": "サインイン",
+          "zh": "登录",
+          "es": "Iniciar sesión"
+        }
+      }
+    },
+    "location": "local",
+    "localId": "register::local::src\\pages\\auth\\Register.content.ts",
+    "filePath": "src\\pages\\auth\\Register.content.ts"
+  }
+]

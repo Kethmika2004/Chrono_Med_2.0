@@ -91,7 +91,7 @@ const content = {
     ".content.yml"
   ],
   "contentDir": [
-    "C:\\Users\\ssn computres\\Desktop\\chrono_med\\Chrono_Med_2.0\\src"
+    "C:\\Users\\ssn computres\\Desktop\\chrono_med\\Chrono_Med_2.0"
   ],
   "codeDir": [
     "C:\\Users\\ssn computres\\Desktop\\chrono_med\\Chrono_Med_2.0"
