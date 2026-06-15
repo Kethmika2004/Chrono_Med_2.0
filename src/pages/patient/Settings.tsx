@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label'; // I'll use standard label if ui/label doesn't exist, but let's assume it might or I'll just write standard <label>
+//import { Label } from '@/components/ui/label'; // I'll use standard label if ui/label doesn't exist, but let's assume it might or I'll just write standard <label>
 import { useAuthStore } from '@/store/authStore';
 import { User, Bell, Shield, Globe, Save, Loader2 } from 'lucide-react';
 
@@ -48,11 +48,10 @@ export default function Settings() {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
-                activeTab === tab.id 
-                  ? 'bg-teal-50 text-teal-700' 
+              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-colors ${activeTab === tab.id
+                  ? 'bg-teal-50 text-teal-700'
                   : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
-              }`}
+                }`}
             >
               <tab.icon className={`w-5 h-5 ${activeTab === tab.id ? 'text-teal-600' : 'text-slate-400'}`} />
               {tab.label}
@@ -73,14 +72,14 @@ export default function Settings() {
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-slate-700">Full Name</label>
-                      <Input 
+                      <Input
                         value={formData.fullName}
-                        onChange={(e) => setFormData({...formData, fullName: e.target.value})}
+                        onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                       />
                     </div>
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-slate-700">Email Address</label>
-                      <Input 
+                      <Input
                         type="email"
                         value={formData.email}
                         disabled
@@ -89,17 +88,17 @@ export default function Settings() {
                     </div>
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-slate-700">Contact Number</label>
-                      <Input 
+                      <Input
                         value={formData.contactNumber}
-                        onChange={(e) => setFormData({...formData, contactNumber: e.target.value})}
+                        onChange={(e) => setFormData({ ...formData, contactNumber: e.target.value })}
                       />
                     </div>
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-slate-700">Emergency Contact</label>
-                      <Input 
+                      <Input
                         placeholder="Name & Number"
                         value={formData.emergencyContact}
-                        onChange={(e) => setFormData({...formData, emergencyContact: e.target.value})}
+                        onChange={(e) => setFormData({ ...formData, emergencyContact: e.target.value })}
                       />
                     </div>
                   </div>
@@ -128,7 +127,7 @@ export default function Settings() {
                       <p className="text-sm text-slate-500">Receive booking confirmations and reminders via email.</p>
                     </div>
                     <label className="relative inline-flex items-center cursor-pointer">
-                      <input type="checkbox" className="sr-only peer" checked={formData.emailNotifs} onChange={() => setFormData({...formData, emailNotifs: !formData.emailNotifs})} />
+                      <input type="checkbox" className="sr-only peer" checked={formData.emailNotifs} onChange={() => setFormData({ ...formData, emailNotifs: !formData.emailNotifs })} />
                       <div className="w-11 h-6 bg-slate-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-teal-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-teal-600"></div>
                     </label>
                   </div>
@@ -138,7 +137,7 @@ export default function Settings() {
                       <p className="text-sm text-slate-500">Receive queue updates and urgent alerts via SMS.</p>
                     </div>
                     <label className="relative inline-flex items-center cursor-pointer">
-                      <input type="checkbox" className="sr-only peer" checked={formData.smsNotifs} onChange={() => setFormData({...formData, smsNotifs: !formData.smsNotifs})} />
+                      <input type="checkbox" className="sr-only peer" checked={formData.smsNotifs} onChange={() => setFormData({ ...formData, smsNotifs: !formData.smsNotifs })} />
                       <div className="w-11 h-6 bg-slate-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-teal-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-teal-600"></div>
                     </label>
                   </div>
@@ -146,7 +145,7 @@ export default function Settings() {
               </CardContent>
             </Card>
           )}
-          
+
           {activeTab === 'preferences' && (
             <Card className="border-slate-200 shadow-sm">
               <CardHeader>
@@ -156,10 +155,10 @@ export default function Settings() {
               <CardContent>
                 <div className="space-y-2 max-w-sm">
                   <label className="text-sm font-medium text-slate-700">Display Language</label>
-                  <select 
+                  <select
                     className="flex h-10 w-full items-center justify-between rounded-md border border-slate-200 bg-white px-3 py-2 text-sm ring-offset-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                     value={formData.language}
-                    onChange={(e) => setFormData({...formData, language: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, language: e.target.value })}
                   >
                     <option value="en">English</option>
                     <option value="si">Sinhala (සිංහල)</option>

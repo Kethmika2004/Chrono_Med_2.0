@@ -1,0 +1,98 @@
+[
+  {
+    "key": "login",
+    "content": {
+      "title": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "Welcome Back",
+          "si": "නැවත සාදරයෙන් පිළිගනිමු",
+          "ta": "மீண்டும் வருக"
+        }
+      },
+      "subtitle": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "Sign in to access your portal",
+          "si": "ඔබගේ ද්වාරයට ප්‍රවේශ වීමට ලොග් වන්න",
+          "ta": "உங்கள் போர்ட்டலை அணுக உள்நுழைக"
+        }
+      },
+      "emailLabel": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "Email Address",
+          "si": "විද්‍යුත් තැපෑල",
+          "ta": "மின்னஞ்சல் முகவரி"
+        }
+      },
+      "emailPlaceholder": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "name@example.com",
+          "si": "name@example.com",
+          "ta": "name@example.com"
+        }
+      },
+      "passwordLabel": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "Password",
+          "si": "මුරපදය",
+          "ta": "கடவுச்சொல்"
+        }
+      },
+      "passwordPlaceholder": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "••••••••",
+          "si": "••••••••",
+          "ta": "••••••••"
+        }
+      },
+      "forgotPassword": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "Forgot password?",
+          "si": "මුරපදය අමතකද?",
+          "ta": "கடவுச்சொல் மறந்துவிட்டதா?"
+        }
+      },
+      "signInButton": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "Sign In",
+          "si": "ඇතුල් වන්න",
+          "ta": "உள்நுழைக"
+        }
+      },
+      "signingIn": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "Signing in...",
+          "si": "ඇතුල් වෙමින්...",
+          "ta": "உள்நுழைகிறது..."
+        }
+      },
+      "dontHaveAccount": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "Don't have an account?",
+          "si": "ගිණුමක් නොමැතිද?",
+          "ta": "கணக்கு இல்லையா?"
+        }
+      },
+      "registerLink": {
+        "nodeType": "translation",
+        "translation": {
+          "en": "Register here",
+          "si": "මෙහි ලියාපදිංචි වන්න",
+          "ta": "இங்கே பதிவு කරන්න"
+        }
+      }
+    },
+    "location": "local",
+    "localId": "login::local::src\\pages\\auth\\Login.content.ts",
+    "filePath": "src\\pages\\auth\\Login.content.ts"
+  }
+]
