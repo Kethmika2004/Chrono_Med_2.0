@@ -1,0 +1,1320 @@
+{
+  "video_sessions": {
+    "columns": [
+      "id",
+      "appointment_id",
+      "daily_room_name",
+      "daily_room_url",
+      "patient_token",
+      "doctor_token",
+      "started_at",
+      "ended_at",
+      "duration_minutes",
+      "recording_url",
+      "recording_consent",
+      "status",
+      "created_at"
+    ],
+    "required": [
+      "id",
+      "appointment_id",
+      "daily_room_name",
+      "daily_room_url"
+    ],
+    "properties": {
+      "id": {
+        "default": "gen_random_uuid()",
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "appointment_id": {
+        "description": "Note:\nThis is a Foreign Key to `appointments.id`.<fk table='appointments' column='id'/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "daily_room_name": {
+        "format": "text",
+        "type": "string"
+      },
+      "daily_room_url": {
+        "format": "text",
+        "type": "string"
+      },
+      "patient_token": {
+        "format": "text",
+        "type": "string"
+      },
+      "doctor_token": {
+        "format": "text",
+        "type": "string"
+      },
+      "started_at": {
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "ended_at": {
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "duration_minutes": {
+        "format": "integer",
+        "type": "integer"
+      },
+      "recording_url": {
+        "format": "text",
+        "type": "string"
+      },
+      "recording_consent": {
+        "default": false,
+        "format": "boolean",
+        "type": "boolean"
+      },
+      "status": {
+        "default": "waiting",
+        "format": "text",
+        "type": "string"
+      },
+      "created_at": {
+        "default": "now()",
+        "format": "timestamp with time zone",
+        "type": "string"
+      }
+    }
+  },
+  "health_records": {
+    "columns": [
+      "id",
+      "patient_id",
+      "chronic_conditions",
+      "current_medications",
+      "allergies",
+      "past_surgeries",
+      "family_history",
+      "immunizations",
+      "fhir_exported_at",
+      "last_updated"
+    ],
+    "required": [
+      "id",
+      "patient_id"
+    ],
+    "properties": {
+      "id": {
+        "default": "gen_random_uuid()",
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "patient_id": {
+        "description": "Note:\nThis is a Foreign Key to `user_profiles.id`.<fk table='user_profiles' column='id'/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "chronic_conditions": {
+        "format": "text[]",
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "current_medications": {
+        "format": "jsonb"
+      },
+      "allergies": {
+        "format": "text[]",
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "past_surgeries": {
+        "format": "jsonb"
+      },
+      "family_history": {
+        "format": "jsonb"
+      },
+      "immunizations": {
+        "format": "jsonb"
+      },
+      "fhir_exported_at": {
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "last_updated": {
+        "default": "now()",
+        "format": "timestamp with time zone",
+        "type": "string"
+      }
+    }
+  },
+  "medical_documents": {
+    "columns": [
+      "id",
+      "patient_id",
+      "appointment_id",
+      "file_url",
+      "file_name",
+      "file_type",
+      "file_size_bytes",
+      "document_category",
+      "uploaded_at",
+      "visible_to_doctor",
+      "doctor_remarks",
+      "doctor_id",
+      "is_archived"
+    ],
+    "required": [
+      "id",
+      "patient_id",
+      "file_url",
+      "file_name"
+    ],
+    "properties": {
+      "id": {
+        "default": "gen_random_uuid()",
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "patient_id": {
+        "description": "Note:\nThis is a Foreign Key to `user_profiles.id`.<fk table='user_profiles' column='id'/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "appointment_id": {
+        "description": "Note:\nThis is a Foreign Key to `appointments.id`.<fk table='appointments' column='id'/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "file_url": {
+        "format": "text",
+        "type": "string"
+      },
+      "file_name": {
+        "format": "text",
+        "type": "string"
+      },
+      "file_type": {
+        "format": "text",
+        "type": "string"
+      },
+      "file_size_bytes": {
+        "format": "bigint",
+        "type": "integer"
+      },
+      "document_category": {
+        "default": "other",
+        "format": "text",
+        "type": "string"
+      },
+      "uploaded_at": {
+        "default": "now()",
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "visible_to_doctor": {
+        "default": false,
+        "format": "boolean",
+        "type": "boolean"
+      },
+      "doctor_remarks": {
+        "format": "text",
+        "type": "string"
+      },
+      "doctor_id": {
+        "description": "Note:\nThis is a Foreign Key to `doctors.id`.<fk table='doctors' column='id'/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "is_archived": {
+        "default": false,
+        "format": "boolean",
+        "type": "boolean"
+      }
+    }
+  },
+  "audit_log": {
+    "columns": [
+      "id",
+      "table_name",
+      "record_id",
+      "action",
+      "actor_id",
+      "old_data",
+      "new_data",
+      "ip_address",
+      "created_at"
+    ],
+    "required": [
+      "id",
+      "table_name",
+      "record_id",
+      "action"
+    ],
+    "properties": {
+      "id": {
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "bigint",
+        "type": "integer"
+      },
+      "table_name": {
+        "format": "text",
+        "type": "string"
+      },
+      "record_id": {
+        "format": "text",
+        "type": "string"
+      },
+      "action": {
+        "format": "text",
+        "type": "string"
+      },
+      "actor_id": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "old_data": {
+        "format": "jsonb"
+      },
+      "new_data": {
+        "format": "jsonb"
+      },
+      "ip_address": {
+        "format": "inet",
+        "type": "string"
+      },
+      "created_at": {
+        "default": "now()",
+        "format": "timestamp with time zone",
+        "type": "string"
+      }
+    }
+  },
+  "doctor_hospital": {
+    "columns": [
+      "doctor_id",
+      "hospital_id",
+      "department",
+      "visiting_days"
+    ],
+    "required": [
+      "doctor_id",
+      "hospital_id"
+    ],
+    "properties": {
+      "doctor_id": {
+        "description": "Note:\nThis is a Primary Key.<pk/>\nThis is a Foreign Key to `doctors.id`.<fk table='doctors' column='id'/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "hospital_id": {
+        "description": "Note:\nThis is a Primary Key.<pk/>\nThis is a Foreign Key to `hospitals.id`.<fk table='hospitals' column='id'/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "department": {
+        "format": "text",
+        "type": "string"
+      },
+      "visiting_days": {
+        "format": "text[]",
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      }
+    }
+  },
+  "appointments": {
+    "columns": [
+      "id",
+      "session_id",
+      "patient_id",
+      "token_number",
+      "appointment_type",
+      "status",
+      "payment_status",
+      "payment_gateway",
+      "payment_ref",
+      "fee_amount",
+      "fee_currency",
+      "consent_given_at",
+      "arrived_at",
+      "called_at",
+      "completed_at",
+      "estimated_wait_min",
+      "actual_wait_min",
+      "chief_complaint",
+      "is_emergency",
+      "is_follow_up",
+      "follow_up_from",
+      "video_join_url",
+      "patient_rating",
+      "patient_feedback",
+      "notes",
+      "cancellation_reason",
+      "patient_timezone",
+      "created_at",
+      "updated_at"
+    ],
+    "required": [
+      "id",
+      "session_id",
+      "patient_id",
+      "token_number",
+      "status"
+    ],
+    "properties": {
+      "id": {
+        "default": "gen_random_uuid()",
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "session_id": {
+        "description": "Note:\nThis is a Foreign Key to `sessions.id`.<fk table='sessions' column='id'/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "patient_id": {
+        "description": "Note:\nThis is a Foreign Key to `user_profiles.id`.<fk table='user_profiles' column='id'/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "token_number": {
+        "format": "integer",
+        "type": "integer"
+      },
+      "appointment_type": {
+        "default": "physical",
+        "format": "text",
+        "type": "string"
+      },
+      "status": {
+        "default": "pending_payment",
+        "format": "text",
+        "type": "string"
+      },
+      "payment_status": {
+        "default": "pending",
+        "format": "text",
+        "type": "string"
+      },
+      "payment_gateway": {
+        "format": "text",
+        "type": "string"
+      },
+      "payment_ref": {
+        "format": "text",
+        "type": "string"
+      },
+      "fee_amount": {
+        "format": "numeric",
+        "type": "number"
+      },
+      "fee_currency": {
+        "default": "LKR",
+        "format": "text",
+        "type": "string"
+      },
+      "consent_given_at": {
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "arrived_at": {
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "called_at": {
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "completed_at": {
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "estimated_wait_min": {
+        "format": "integer",
+        "type": "integer"
+      },
+      "actual_wait_min": {
+        "format": "integer",
+        "type": "integer"
+      },
+      "chief_complaint": {
+        "format": "text",
+        "type": "string"
+      },
+      "is_emergency": {
+        "default": false,
+        "format": "boolean",
+        "type": "boolean"
+      },
+      "is_follow_up": {
+        "default": false,
+        "format": "boolean",
+        "type": "boolean"
+      },
+      "follow_up_from": {
+        "description": "Note:\nThis is a Foreign Key to `appointments.id`.<fk table='appointments' column='id'/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "video_join_url": {
+        "format": "text",
+        "type": "string"
+      },
+      "patient_rating": {
+        "format": "integer",
+        "type": "integer"
+      },
+      "patient_feedback": {
+        "format": "text",
+        "type": "string"
+      },
+      "notes": {
+        "format": "text",
+        "type": "string"
+      },
+      "cancellation_reason": {
+        "format": "text",
+        "type": "string"
+      },
+      "patient_timezone": {
+        "default": "Asia/Colombo",
+        "format": "text",
+        "type": "string"
+      },
+      "created_at": {
+        "default": "now()",
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "updated_at": {
+        "default": "now()",
+        "format": "timestamp with time zone",
+        "type": "string"
+      }
+    }
+  },
+  "ml_predictions": {
+    "columns": [
+      "id",
+      "session_id",
+      "predicted_at",
+      "arrival_forecast",
+      "avg_consult_min",
+      "predicted_peak_hour",
+      "confidence_score",
+      "model_version",
+      "mae_score"
+    ],
+    "required": [
+      "id"
+    ],
+    "properties": {
+      "id": {
+        "default": "gen_random_uuid()",
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "session_id": {
+        "description": "Note:\nThis is a Foreign Key to `sessions.id`.<fk table='sessions' column='id'/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "predicted_at": {
+        "default": "now()",
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "arrival_forecast": {
+        "format": "jsonb"
+      },
+      "avg_consult_min": {
+        "format": "numeric",
+        "type": "number"
+      },
+      "predicted_peak_hour": {
+        "format": "time without time zone",
+        "type": "string"
+      },
+      "confidence_score": {
+        "format": "numeric",
+        "type": "number"
+      },
+      "model_version": {
+        "format": "text",
+        "type": "string"
+      },
+      "mae_score": {
+        "format": "numeric",
+        "type": "number"
+      }
+    }
+  },
+  "prescriptions": {
+    "columns": [
+      "id",
+      "appointment_id",
+      "doctor_id",
+      "patient_id",
+      "medications",
+      "instructions",
+      "follow_up_date",
+      "is_digital",
+      "pdf_url",
+      "created_at"
+    ],
+    "required": [
+      "id",
+      "appointment_id",
+      "doctor_id",
+      "patient_id",
+      "medications"
+    ],
+    "properties": {
+      "id": {
+        "default": "gen_random_uuid()",
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "appointment_id": {
+        "description": "Note:\nThis is a Foreign Key to `appointments.id`.<fk table='appointments' column='id'/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "doctor_id": {
+        "description": "Note:\nThis is a Foreign Key to `doctors.id`.<fk table='doctors' column='id'/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "patient_id": {
+        "description": "Note:\nThis is a Foreign Key to `user_profiles.id`.<fk table='user_profiles' column='id'/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "medications": {
+        "format": "jsonb"
+      },
+      "instructions": {
+        "format": "text",
+        "type": "string"
+      },
+      "follow_up_date": {
+        "format": "date",
+        "type": "string"
+      },
+      "is_digital": {
+        "default": true,
+        "format": "boolean",
+        "type": "boolean"
+      },
+      "pdf_url": {
+        "format": "text",
+        "type": "string"
+      },
+      "created_at": {
+        "default": "now()",
+        "format": "timestamp with time zone",
+        "type": "string"
+      }
+    }
+  },
+  "waitlist": {
+    "columns": [
+      "id",
+      "session_id",
+      "patient_id",
+      "position",
+      "notified_at",
+      "accepted_at",
+      "expires_at",
+      "status",
+      "created_at"
+    ],
+    "required": [
+      "id",
+      "session_id",
+      "patient_id",
+      "position"
+    ],
+    "properties": {
+      "id": {
+        "default": "gen_random_uuid()",
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "session_id": {
+        "description": "Note:\nThis is a Foreign Key to `sessions.id`.<fk table='sessions' column='id'/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "patient_id": {
+        "description": "Note:\nThis is a Foreign Key to `user_profiles.id`.<fk table='user_profiles' column='id'/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "position": {
+        "format": "integer",
+        "type": "integer"
+      },
+      "notified_at": {
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "accepted_at": {
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "expires_at": {
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "status": {
+        "default": "waiting",
+        "format": "text",
+        "type": "string"
+      },
+      "created_at": {
+        "default": "now()",
+        "format": "timestamp with time zone",
+        "type": "string"
+      }
+    }
+  },
+  "user_profiles": {
+    "columns": [
+      "id",
+      "role",
+      "full_name",
+      "phone",
+      "avatar_url",
+      "nic_passport",
+      "license_no",
+      "inst_code",
+      "is_verified",
+      "preferred_language",
+      "date_of_birth",
+      "gender",
+      "blood_group",
+      "emergency_contact",
+      "notification_prefs",
+      "created_at",
+      "updated_at",
+      "contact_number",
+      "email"
+    ],
+    "required": [
+      "id",
+      "role",
+      "full_name"
+    ],
+    "properties": {
+      "id": {
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "role": {
+        "format": "text",
+        "type": "string"
+      },
+      "full_name": {
+        "format": "text",
+        "type": "string"
+      },
+      "phone": {
+        "format": "text",
+        "type": "string"
+      },
+      "avatar_url": {
+        "format": "text",
+        "type": "string"
+      },
+      "nic_passport": {
+        "format": "text",
+        "type": "string"
+      },
+      "license_no": {
+        "format": "text",
+        "type": "string"
+      },
+      "inst_code": {
+        "format": "text",
+        "type": "string"
+      },
+      "is_verified": {
+        "default": false,
+        "format": "boolean",
+        "type": "boolean"
+      },
+      "preferred_language": {
+        "default": "en",
+        "format": "text",
+        "type": "string"
+      },
+      "date_of_birth": {
+        "format": "date",
+        "type": "string"
+      },
+      "gender": {
+        "format": "text",
+        "type": "string"
+      },
+      "blood_group": {
+        "format": "text",
+        "type": "string"
+      },
+      "emergency_contact": {
+        "format": "text",
+        "type": "string"
+      },
+      "notification_prefs": {
+        "format": "jsonb"
+      },
+      "created_at": {
+        "default": "now()",
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "updated_at": {
+        "default": "now()",
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "contact_number": {
+        "format": "text",
+        "type": "string"
+      },
+      "email": {
+        "format": "text",
+        "type": "string"
+      }
+    }
+  },
+  "sessions": {
+    "columns": [
+      "id",
+      "doctor_id",
+      "hospital_id",
+      "session_date",
+      "start_time",
+      "end_time",
+      "max_patients",
+      "session_type",
+      "status",
+      "actual_start",
+      "delay_minutes",
+      "delay_reason",
+      "consultation_fee_lkr",
+      "consultation_fee_usd",
+      "video_room_url",
+      "video_room_name",
+      "notes",
+      "is_walk_in_allowed",
+      "recurrence_rule",
+      "timezone",
+      "created_at",
+      "updated_at"
+    ],
+    "required": [
+      "id",
+      "doctor_id",
+      "session_date",
+      "start_time",
+      "max_patients",
+      "session_type",
+      "status"
+    ],
+    "properties": {
+      "id": {
+        "default": "gen_random_uuid()",
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "doctor_id": {
+        "description": "Note:\nThis is a Foreign Key to `doctors.id`.<fk table='doctors' column='id'/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "hospital_id": {
+        "description": "Note:\nThis is a Foreign Key to `hospitals.id`.<fk table='hospitals' column='id'/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "session_date": {
+        "format": "date",
+        "type": "string"
+      },
+      "start_time": {
+        "format": "time without time zone",
+        "type": "string"
+      },
+      "end_time": {
+        "format": "time without time zone",
+        "type": "string"
+      },
+      "max_patients": {
+        "default": 20,
+        "format": "integer",
+        "type": "integer"
+      },
+      "session_type": {
+        "default": "physical",
+        "format": "text",
+        "type": "string"
+      },
+      "status": {
+        "default": "scheduled",
+        "format": "text",
+        "type": "string"
+      },
+      "actual_start": {
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "delay_minutes": {
+        "default": 0,
+        "format": "integer",
+        "type": "integer"
+      },
+      "delay_reason": {
+        "format": "text",
+        "type": "string"
+      },
+      "consultation_fee_lkr": {
+        "format": "numeric",
+        "type": "number"
+      },
+      "consultation_fee_usd": {
+        "format": "numeric",
+        "type": "number"
+      },
+      "video_room_url": {
+        "format": "text",
+        "type": "string"
+      },
+      "video_room_name": {
+        "format": "text",
+        "type": "string"
+      },
+      "notes": {
+        "format": "text",
+        "type": "string"
+      },
+      "is_walk_in_allowed": {
+        "default": false,
+        "format": "boolean",
+        "type": "boolean"
+      },
+      "recurrence_rule": {
+        "format": "text",
+        "type": "string"
+      },
+      "timezone": {
+        "default": "Asia/Colombo",
+        "format": "text",
+        "type": "string"
+      },
+      "created_at": {
+        "default": "now()",
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "updated_at": {
+        "default": "now()",
+        "format": "timestamp with time zone",
+        "type": "string"
+      }
+    }
+  },
+  "doctors": {
+    "columns": [
+      "id",
+      "profile_id",
+      "specialty",
+      "sub_specialty",
+      "qualifications",
+      "avg_consultation_min",
+      "consultation_fee_lkr",
+      "consultation_fee_usd",
+      "bio",
+      "languages",
+      "accepts_video",
+      "accepts_international",
+      "rating",
+      "total_reviews",
+      "country",
+      "timezone",
+      "is_active",
+      "is_accepting_new_patients",
+      "created_at"
+    ],
+    "required": [
+      "id",
+      "specialty"
+    ],
+    "properties": {
+      "id": {
+        "default": "gen_random_uuid()",
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "profile_id": {
+        "description": "Note:\nThis is a Foreign Key to `user_profiles.id`.<fk table='user_profiles' column='id'/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "specialty": {
+        "format": "text",
+        "type": "string"
+      },
+      "sub_specialty": {
+        "format": "text",
+        "type": "string"
+      },
+      "qualifications": {
+        "format": "text[]",
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "avg_consultation_min": {
+        "default": 10,
+        "format": "numeric",
+        "type": "number"
+      },
+      "consultation_fee_lkr": {
+        "format": "numeric",
+        "type": "number"
+      },
+      "consultation_fee_usd": {
+        "format": "numeric",
+        "type": "number"
+      },
+      "bio": {
+        "format": "text",
+        "type": "string"
+      },
+      "languages": {
+        "format": "text[]",
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "accepts_video": {
+        "default": false,
+        "format": "boolean",
+        "type": "boolean"
+      },
+      "accepts_international": {
+        "default": false,
+        "format": "boolean",
+        "type": "boolean"
+      },
+      "rating": {
+        "default": 0,
+        "format": "numeric",
+        "type": "number"
+      },
+      "total_reviews": {
+        "default": 0,
+        "format": "integer",
+        "type": "integer"
+      },
+      "country": {
+        "default": "LK",
+        "format": "text",
+        "type": "string"
+      },
+      "timezone": {
+        "default": "Asia/Colombo",
+        "format": "text",
+        "type": "string"
+      },
+      "is_active": {
+        "default": true,
+        "format": "boolean",
+        "type": "boolean"
+      },
+      "is_accepting_new_patients": {
+        "default": true,
+        "format": "boolean",
+        "type": "boolean"
+      },
+      "created_at": {
+        "default": "now()",
+        "format": "timestamp with time zone",
+        "type": "string"
+      }
+    }
+  },
+  "hospitals": {
+    "columns": [
+      "id",
+      "profile_id",
+      "name",
+      "address",
+      "city",
+      "country",
+      "phone",
+      "license_code",
+      "registration_number",
+      "type",
+      "facilities",
+      "operating_hours",
+      "location_lat",
+      "location_lng",
+      "logo_url",
+      "is_active",
+      "created_at"
+    ],
+    "required": [
+      "id",
+      "name",
+      "license_code"
+    ],
+    "properties": {
+      "id": {
+        "default": "gen_random_uuid()",
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "profile_id": {
+        "description": "Note:\nThis is a Foreign Key to `user_profiles.id`.<fk table='user_profiles' column='id'/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "name": {
+        "format": "text",
+        "type": "string"
+      },
+      "address": {
+        "format": "text",
+        "type": "string"
+      },
+      "city": {
+        "format": "text",
+        "type": "string"
+      },
+      "country": {
+        "default": "LK",
+        "format": "text",
+        "type": "string"
+      },
+      "phone": {
+        "format": "text",
+        "type": "string"
+      },
+      "license_code": {
+        "format": "text",
+        "type": "string"
+      },
+      "registration_number": {
+        "format": "text",
+        "type": "string"
+      },
+      "type": {
+        "default": "private",
+        "format": "text",
+        "type": "string"
+      },
+      "facilities": {
+        "format": "jsonb"
+      },
+      "operating_hours": {
+        "format": "jsonb"
+      },
+      "location_lat": {
+        "format": "numeric",
+        "type": "number"
+      },
+      "location_lng": {
+        "format": "numeric",
+        "type": "number"
+      },
+      "logo_url": {
+        "format": "text",
+        "type": "string"
+      },
+      "is_active": {
+        "default": true,
+        "format": "boolean",
+        "type": "boolean"
+      },
+      "created_at": {
+        "default": "now()",
+        "format": "timestamp with time zone",
+        "type": "string"
+      }
+    }
+  },
+  "reviews": {
+    "columns": [
+      "id",
+      "appointment_id",
+      "patient_id",
+      "doctor_id",
+      "hospital_id",
+      "rating",
+      "wait_time_rating",
+      "doctor_rating",
+      "facility_rating",
+      "video_quality_rating",
+      "comment",
+      "is_anonymous",
+      "created_at"
+    ],
+    "required": [
+      "id",
+      "patient_id",
+      "doctor_id",
+      "rating"
+    ],
+    "properties": {
+      "id": {
+        "default": "gen_random_uuid()",
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "appointment_id": {
+        "description": "Note:\nThis is a Foreign Key to `appointments.id`.<fk table='appointments' column='id'/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "patient_id": {
+        "description": "Note:\nThis is a Foreign Key to `user_profiles.id`.<fk table='user_profiles' column='id'/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "doctor_id": {
+        "description": "Note:\nThis is a Foreign Key to `doctors.id`.<fk table='doctors' column='id'/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "hospital_id": {
+        "description": "Note:\nThis is a Foreign Key to `hospitals.id`.<fk table='hospitals' column='id'/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "rating": {
+        "format": "integer",
+        "type": "integer"
+      },
+      "wait_time_rating": {
+        "format": "integer",
+        "type": "integer"
+      },
+      "doctor_rating": {
+        "format": "integer",
+        "type": "integer"
+      },
+      "facility_rating": {
+        "format": "integer",
+        "type": "integer"
+      },
+      "video_quality_rating": {
+        "format": "integer",
+        "type": "integer"
+      },
+      "comment": {
+        "format": "text",
+        "type": "string"
+      },
+      "is_anonymous": {
+        "default": false,
+        "format": "boolean",
+        "type": "boolean"
+      },
+      "created_at": {
+        "default": "now()",
+        "format": "timestamp with time zone",
+        "type": "string"
+      }
+    }
+  },
+  "notifications": {
+    "columns": [
+      "id",
+      "user_id",
+      "type",
+      "title",
+      "body",
+      "channel",
+      "status",
+      "metadata",
+      "sent_at",
+      "read_at",
+      "created_at"
+    ],
+    "required": [
+      "id",
+      "user_id",
+      "type",
+      "title",
+      "body",
+      "channel"
+    ],
+    "properties": {
+      "id": {
+        "default": "gen_random_uuid()",
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "user_id": {
+        "description": "Note:\nThis is a Foreign Key to `user_profiles.id`.<fk table='user_profiles' column='id'/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "type": {
+        "format": "text",
+        "type": "string"
+      },
+      "title": {
+        "format": "text",
+        "type": "string"
+      },
+      "body": {
+        "format": "text",
+        "type": "string"
+      },
+      "channel": {
+        "format": "text",
+        "type": "string"
+      },
+      "status": {
+        "default": "pending",
+        "format": "text",
+        "type": "string"
+      },
+      "metadata": {
+        "format": "jsonb"
+      },
+      "sent_at": {
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "read_at": {
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "created_at": {
+        "default": "now()",
+        "format": "timestamp with time zone",
+        "type": "string"
+      }
+    }
+  }
+}
