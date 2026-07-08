@@ -35,18 +35,20 @@ interface AuthState {
   role: 'patient' | 'doctor' | 'hospital' | 'superadmin' | null
   isLoading: boolean
   loading: boolean // compatibility flag
+  isInitialized: boolean
   setUser: (user: User | null) => void
   setProfile: (profile: UserProfile | null) => void
   signOut: () => Promise<void>
   initialize: () => Promise<void>
 }
 
-export const useAuthStore = create<AuthState>((set) => ({
+export const useAuthStore = create<AuthState>((set, get) => ({
   user: null,
   profile: null,
   role: null,
   isLoading: true,
   loading: true,
+  isInitialized: false,
   setUser: (user) => set({ user }),
   setProfile: (profile) => set({ profile, role: profile?.role ?? null }),
   signOut: async () => {
@@ -54,6 +56,8 @@ export const useAuthStore = create<AuthState>((set) => ({
     set({ user: null, profile: null, role: null })
   },
   initialize: async () => {
+    if (get().isInitialized) return
+    set({ isInitialized: true })
     try {
       const { data: { session }, error } = await supabase.auth.getSession()
       if (error) throw error

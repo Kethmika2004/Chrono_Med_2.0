@@ -61,6 +61,7 @@ function App() {
             <Route path="dashboard" element={<DoctorDashboard />} />
             <Route path="sessions" element={<DoctorSessions />} />
             <Route path="session/:sessionId/manage" element={<SessionManage />} />
+            <Route path="session-manage" element={<SessionManage />} />
             <Route path="prescriptions" element={<Prescriptions />} />
             <Route path="analytics" element={<DoctorAnalytics />} />
           </Route>
@@ -74,7 +75,7 @@ function App() {
             <Route path="sessions" element={<HospitalSessions />} />
             <Route path="appointments" element={<HospitalAppointments />} />
             <Route path="analytics" element={<HospitalAnalytics />} />
-            <Route path="audit" element={<AuditLog />} />
+            <Route path="audit-log" element={<AuditLog />} />
             <Route path="settings" element={<HospitalSettings />} />
           </Route>
         </Route>
