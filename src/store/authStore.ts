@@ -9,6 +9,7 @@ export interface UserProfile {
   is_verified: boolean
   preferred_language?: string
   email?: string
+  phone?: string
   contact_number?: string
   nic_or_passport?: string
   phone_number?: string
