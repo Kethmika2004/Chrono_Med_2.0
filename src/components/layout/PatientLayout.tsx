@@ -13,10 +13,11 @@ import {
   Menu,
   X
 } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAuthStore } from '@/store/authStore';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import { useIntlayer } from 'react-intlayer';
+import { supabase } from '@/lib/supabase';
 
 const navigation = [
   { name: 'Dashboard', href: '/patient/dashboard', icon: LayoutDashboard },
@@ -31,8 +32,49 @@ const navigation = [
 
 export default function PatientLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [unreadCount, setUnreadCount] = useState(0);
   const location = useLocation();
   const { profile, signOut } = useAuthStore();
+  
+  useEffect(() => {
+    if (!profile?.id) return;
+
+    const fetchUnreadCount = async () => {
+      const { count, error } = await supabase
+        .from('notifications')
+        .select('*', { count: 'exact', head: true })
+        .eq('user_id', profile.id)
+        .is('read_at', null);
+
+      if (!error && count !== null) {
+        setUnreadCount(count);
+      }
+    };
+
+    fetchUnreadCount();
+
+    // Subscribe to notifications changes
+    const channel = supabase
+      .channel(`patient_notifications_${profile.id}`)
+      .on(
+        'postgres_changes',
+        {
+          event: '*',
+          schema: 'public',
+          table: 'notifications',
+          filter: `user_id=eq.${profile.id}`
+        },
+        () => {
+          fetchUnreadCount();
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, [profile?.id]);
+
   const {
     dashboard,
     bookAppointment,
@@ -139,7 +181,11 @@ export default function PatientLayout() {
               <Link to="/patient/notifications" className="relative p-2 text-slate-400 hover:text-slate-500 rounded-full hover:bg-slate-100 transition-colors">
                 <span className="sr-only">{viewNotifications}</span>
                 <Bell className="w-6 h-6" />
-                <span className="absolute top-1.5 right-1.5 block w-2.5 h-2.5 rounded-full bg-red-500 ring-2 ring-white" />
+                {unreadCount > 0 && (
+                  <span className="absolute top-1 right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[10px] font-bold text-white ring-2 ring-white animate-pulse">
+                    {unreadCount}
+                  </span>
+                )}
               </Link>
 
               <div className="flex items-center gap-3">

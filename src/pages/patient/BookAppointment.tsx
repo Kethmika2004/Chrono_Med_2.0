@@ -1,26 +1,23 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Search, MapPin, Star, Calendar, Clock, CreditCard, CheckCircle2, ChevronRight, ChevronLeft } from 'lucide-react';
+import { Search, MapPin, Star, Calendar, Clock, CreditCard, CheckCircle2, ChevronRight, ChevronLeft, Loader2 } from 'lucide-react';
 import { useIntlayer } from 'react-intlayer';
-
-// Mock Data
-const MOCK_DOCTORS = [
-  { id: 1, name: 'Dr. Sarah Connor', specialty: 'Cardiologist', hospital: 'Nawaloka Hospital', rating: 4.8, fee: 2500, image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah' },
-  { id: 2, name: 'Dr. John Smith', specialty: 'Neurologist', hospital: 'Asiri Surgical', rating: 4.9, fee: 3000, image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=John' },
-  { id: 3, name: 'Dr. Emily Chen', specialty: 'Dermatologist', hospital: 'Lanka Hospitals', rating: 4.7, fee: 2000, image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Emily' },
-];
-
-const MOCK_SESSIONS = [
-  { id: 1, date: 'Oct 24, 2023', time: '10:00 AM - 01:00 PM', tokensAvailable: 15 },
-  { id: 2, date: 'Oct 26, 2023', time: '04:00 PM - 07:00 PM', tokensAvailable: 5 },
-];
+import { supabase } from '@/lib/supabase';
+import { useAuthStore } from '@/store/authStore';
 
 export default function BookAppointment() {
+  const { profile } = useAuthStore();
   const [step, setStep] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
   
+  // Database Data
+  const [doctorsList, setDoctorsList] = useState<any[]>([]);
+  const [sessionsList, setSessionsList] = useState<any[]>([]);
+  const [isLoadingDoctors, setIsLoadingDoctors] = useState(true);
+  const [isLoadingSessions, setIsLoadingSessions] = useState(false);
+
   // Selections
   const [selectedDoctor, setSelectedDoctor] = useState<any>(null);
   const [selectedSession, setSelectedSession] = useState<any>(null);
@@ -61,21 +58,184 @@ export default function BookAppointment() {
     continueButton
   } = useIntlayer('book-appointment');
 
+  // Fetch Doctors on mount
+  useEffect(() => {
+    const fetchDoctors = async () => {
+      try {
+        setIsLoadingDoctors(true);
+        const { data, error } = await supabase
+          .from('doctors')
+          .select(`
+            id,
+            specialty,
+            consultation_fee_lkr,
+            rating,
+            user_profiles:profile_id (
+              full_name,
+              avatar_url
+            )
+          `)
+          .eq('is_active', true);
+
+        if (error) throw error;
+
+        const mapped = (data || []).map(d => ({
+          id: d.id,
+          name: d.user_profiles?.full_name || 'Medical Doctor',
+          specialty: d.specialty || 'General Practitioner',
+          rating: d.rating || 5.0,
+          fee: d.consultation_fee_lkr || 2500,
+          image: d.user_profiles?.avatar_url || `https://api.dicebear.com/7.x/avataaars/svg?seed=${d.id}`
+        }));
+
+        setDoctorsList(mapped);
+      } catch (err) {
+        console.error('Error fetching doctors:', err);
+      } finally {
+        setIsLoadingDoctors(false);
+      }
+    };
+
+    fetchDoctors();
+  }, []);
+
+  // Fetch Sessions when selectedDoctor changes
+  useEffect(() => {
+    if (!selectedDoctor) {
+      setSessionsList([]);
+      setSelectedSession(null);
+      return;
+    }
+
+    const fetchSessions = async () => {
+      try {
+        setIsLoadingSessions(true);
+        const { data, error } = await supabase
+          .from('sessions')
+          .select(`
+            id,
+            session_date,
+            start_time,
+            end_time,
+            max_patients,
+            consultation_fee_lkr,
+            hospitals (
+              id,
+              name,
+              city
+            )
+          `)
+          .eq('doctor_id', selectedDoctor.id)
+          .in('status', ['active', 'delayed', 'inactive'])
+          .order('session_date', { ascending: true });
+
+        if (error) throw error;
+
+        // Parse sessions and query available slots
+        const parsed = await Promise.all((data || []).map(async (s: any) => {
+          const { count } = await supabase
+            .from('appointments')
+            .select('*', { count: 'exact', head: true })
+            .eq('session_id', s.id)
+            .neq('status', 'cancelled');
+
+          const dateObj = new Date(s.session_date);
+          const formattedDate = dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+          const formatTime = (timeStr: string) => {
+            const [hours, minutes] = timeStr.split(':');
+            const h = parseInt(hours, 10);
+            const ampm = h >= 12 ? 'PM' : 'AM';
+            const displayHour = h % 12 || 12;
+            return `${displayHour}:${minutes} ${ampm}`;
+          };
+
+          const timeRange = `${formatTime(s.start_time)} - ${formatTime(s.end_time)}`;
+          const left = Math.max(0, s.max_patients - (count || 0));
+
+          return {
+            id: s.id,
+            date: formattedDate,
+            time: timeRange,
+            tokensAvailable: left,
+            hospitalName: s.hospitals?.name || 'Affiliated Hospital',
+            fee: s.consultation_fee_lkr || selectedDoctor.fee
+          };
+        }));
+
+        setSessionsList(parsed);
+      } catch (err) {
+        console.error('Error fetching sessions:', err);
+      } finally {
+        setIsLoadingSessions(false);
+      }
+    };
+
+    fetchSessions();
+  }, [selectedDoctor]);
+
   const handleNext = () => setStep(s => Math.min(s + 1, 4));
   const handlePrev = () => setStep(s => Math.max(s - 1, 1));
 
-  const handlePayment = () => {
+  const handlePayment = async () => {
+    if (!profile?.id || !selectedSession) return;
     setIsProcessing(true);
-    // Mock PayHere integration delay
-    setTimeout(() => {
-      setIsProcessing(false);
+    try {
+      // 1. Get next token number
+      const { count: bookedCount } = await supabase
+        .from('appointments')
+        .select('*', { count: 'exact', head: true })
+        .eq('session_id', selectedSession.id);
+      const nextToken = (bookedCount || 0) + 1;
+
+      // 2. Insert appointment
+      const { error } = await supabase
+        .from('appointments')
+        .insert([
+          {
+            session_id: selectedSession.id,
+            patient_id: profile.id,
+            token_number: nextToken,
+            appointment_type: 'consultation',
+            status: 'upcoming',
+            payment_status: 'paid',
+            payment_gateway: 'PayHere',
+            payment_ref: 'PAYHERE-' + Date.now(),
+            fee_amount: selectedSession.fee,
+            fee_currency: 'LKR',
+            chief_complaint: complaint,
+            is_emergency: false
+          }
+        ]);
+
+      if (error) throw error;
+
+      // 3. Insert notification
+      await supabase
+        .from('notifications')
+        .insert([
+          {
+            user_id: profile.id,
+            type: 'appointment',
+            title: 'Appointment Booked',
+            body: `Your slot is confirmed with ${selectedDoctor.name}. Token #${nextToken}.`,
+            channel: 'in-app',
+            status: 'unread'
+          }
+        ]);
+
+      setTokenNumber(nextToken);
       setBookingConfirmed(true);
-      setTokenNumber(Math.floor(Math.random() * 20) + 1);
       setStep(4);
-    }, 2000);
+    } catch (err) {
+      console.error('Booking failed:', err);
+      alert('Failed to process booking. Please try again.');
+    } finally {
+      setIsProcessing(false);
+    }
   };
 
-  const filteredDoctors = MOCK_DOCTORS.filter(d => 
+  const filteredDoctors = doctorsList.filter(d => 
     d.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
     d.specialty.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -128,31 +288,42 @@ export default function BookAppointment() {
                 />
               </div>
 
-              <div className="grid gap-4">
-                {filteredDoctors.map(doc => (
-                  <div 
-                    key={doc.id} 
-                    className={`flex flex-col sm:flex-row items-center gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all ${
-                      selectedDoctor?.id === doc.id ? 'border-teal-500 bg-teal-50' : 'border-slate-100 hover:border-teal-200 hover:bg-slate-50'
-                    }`}
-                    onClick={() => setSelectedDoctor(doc)}
-                  >
-                    <img src={doc.image} alt={doc.name} className="w-16 h-16 bg-white rounded-full shadow-sm border border-slate-200" />
-                    <div className="flex-1 text-center sm:text-left">
-                      <h3 className="font-semibold text-lg text-slate-900">{doc.name}</h3>
-                      <p className="text-teal-600 font-medium">{doc.specialty}</p>
-                      <div className="flex items-center justify-center sm:justify-start gap-3 mt-2 text-sm text-slate-500">
-                        <span className="flex items-center gap-1"><MapPin className="w-4 h-4" /> {doc.hospital}</span>
-                        <span className="flex items-center gap-1 text-amber-500"><Star className="w-4 h-4 fill-current" /> {doc.rating}</span>
+              {isLoadingDoctors ? (
+                <div className="flex flex-col items-center justify-center py-12 gap-2 text-slate-500">
+                  <Loader2 className="w-8 h-8 animate-spin text-teal-600" />
+                  <p className="text-sm">Loading doctors...</p>
+                </div>
+              ) : (
+                <div className="grid gap-4">
+                  {filteredDoctors.length === 0 ? (
+                    <p className="text-center py-8 text-slate-400 italic">No doctors found matching "{searchQuery}"</p>
+                  ) : (
+                    filteredDoctors.map(doc => (
+                      <div 
+                        key={doc.id} 
+                        className={`flex flex-col sm:flex-row items-center gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all ${
+                          selectedDoctor?.id === doc.id ? 'border-teal-500 bg-teal-50' : 'border-slate-100 hover:border-teal-200 hover:bg-slate-50'
+                        }`}
+                        onClick={() => setSelectedDoctor(doc)}
+                      >
+                        <img src={doc.image} alt={doc.name} className="w-16 h-16 bg-white rounded-full shadow-sm border border-slate-200 object-cover" />
+                        <div className="flex-1 text-center sm:text-left">
+                          <h3 className="font-semibold text-lg text-slate-900">{doc.name}</h3>
+                          <p className="text-teal-600 font-medium">{doc.specialty}</p>
+                          <div className="flex items-center justify-center sm:justify-start gap-3 mt-2 text-sm text-slate-500">
+                            <span className="flex items-center gap-1"><MapPin className="w-4 h-4" /> Navigating hospital...</span>
+                            <span className="flex items-center gap-1 text-amber-500"><Star className="w-4 h-4 fill-current" /> {doc.rating}</span>
+                          </div>
+                        </div>
+                        <div className="text-right">
+                          <p className="text-lg font-bold text-slate-900">Rs. {doc.fee}</p>
+                          <p className="text-xs text-slate-500">{consultationFee}</p>
+                        </div>
                       </div>
-                    </div>
-                    <div className="text-right">
-                      <p className="text-lg font-bold text-slate-900">Rs. {doc.fee}</p>
-                      <p className="text-xs text-slate-500">{consultationFee}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
+                    ))
+                  )}
+                </div>
+              )}
             </div>
           )}
 
@@ -160,38 +331,53 @@ export default function BookAppointment() {
           {step === 2 && (
             <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-500">
               <div className="flex items-center gap-4 mb-6 p-4 bg-slate-50 rounded-xl">
-                 <img src={selectedDoctor.image} alt={selectedDoctor.name} className="w-12 h-12 bg-white rounded-full border border-slate-200" />
+                 <img src={selectedDoctor.image} alt={selectedDoctor.name} className="w-12 h-12 bg-white rounded-full border border-slate-200 object-cover" />
                  <div>
                    <h3 className="font-semibold text-slate-900">{selectedDoctor.name}</h3>
                    <p className="text-sm text-slate-500">{selectedDoctor.specialty}</p>
                  </div>
               </div>
               <h3 className="text-lg font-semibold mb-4">{availableSessions}</h3>
-              <div className="grid sm:grid-cols-2 gap-4">
-                {MOCK_SESSIONS.map(session => (
-                  <div 
-                    key={session.id}
-                    className={`p-5 rounded-xl border-2 cursor-pointer transition-all ${
-                      selectedSession?.id === session.id ? 'border-teal-500 bg-teal-50 shadow-md' : 'border-slate-200 hover:border-teal-300'
-                    }`}
-                    onClick={() => setSelectedSession(session)}
-                  >
-                    <div className="flex items-center gap-2 text-slate-800 font-semibold mb-2">
-                      <Calendar className="w-5 h-5 text-teal-600" />
-                      {session.date}
-                    </div>
-                    <div className="flex items-center gap-2 text-slate-600 mb-4">
-                      <Clock className="w-4 h-4" />
-                      {session.time}
-                    </div>
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="bg-teal-100 text-teal-800 px-2 py-1 rounded-md font-medium">
-                        {session.tokensAvailable} {tokensLeft}
-                      </span>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              {isLoadingSessions ? (
+                <div className="flex flex-col items-center justify-center py-12 gap-2 text-slate-500">
+                  <Loader2 className="w-8 h-8 animate-spin text-teal-600" />
+                  <p className="text-sm">Loading sessions...</p>
+                </div>
+              ) : (
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {sessionsList.length === 0 ? (
+                    <p className="text-center py-8 text-slate-400 italic col-span-2">No active sessions available for this doctor.</p>
+                  ) : (
+                    sessionsList.map(session => (
+                      <div 
+                        key={session.id}
+                        className={`p-5 rounded-xl border-2 cursor-pointer transition-all ${
+                          selectedSession?.id === session.id ? 'border-teal-500 bg-teal-50 shadow-md' : 'border-slate-200 hover:border-teal-300'
+                        }`}
+                        onClick={() => setSelectedSession(session)}
+                      >
+                        <div className="flex items-center gap-2 text-slate-800 font-semibold mb-2">
+                          <Calendar className="w-5 h-5 text-teal-600" />
+                          {session.date}
+                        </div>
+                        <div className="flex items-center gap-2 text-slate-600 mb-2">
+                          <Clock className="w-4 h-4" />
+                          {session.time}
+                        </div>
+                        <div className="text-xs font-semibold text-slate-500 mb-3 flex items-center gap-1">
+                          <MapPin className="w-3.5 h-3.5" />
+                          {session.hospitalName}
+                        </div>
+                        <div className="flex items-center justify-between text-sm">
+                          <span className="bg-teal-100 text-teal-800 px-2 py-1 rounded-md font-medium">
+                            {session.tokensAvailable} {tokensLeft}
+                          </span>
+                        </div>
+                      </div>
+                    ))
+                  )}
+                </div>
+              )}
             </div>
           )}
 
@@ -246,9 +432,9 @@ export default function BookAppointment() {
                       <div className="flex justify-between"><span className="text-slate-500">{dateLabel}</span><span className="font-medium text-slate-900">{selectedSession.date}</span></div>
                       <div className="flex justify-between"><span className="text-slate-500">{timeLabel}</span><span className="font-medium text-slate-900">{selectedSession.time}</span></div>
                       <div className="w-full h-px bg-slate-200 my-4" />
-                      <div className="flex justify-between"><span className="text-slate-500">{consultationFee}</span><span>Rs. {selectedDoctor.fee}</span></div>
+                      <div className="flex justify-between"><span className="text-slate-500">{consultationFee}</span><span>Rs. {selectedSession.fee}</span></div>
                       <div className="flex justify-between"><span className="text-slate-500">{bookingFee}</span><span>Rs. 300</span></div>
-                      <div className="flex justify-between text-lg font-bold text-slate-900 pt-2"><span className="text-slate-900">{totalPayable}</span><span className="text-teal-600">Rs. {selectedDoctor.fee + 300}</span></div>
+                      <div className="flex justify-between text-lg font-bold text-slate-900 pt-2"><span className="text-slate-900">{totalPayable}</span><span className="text-teal-600">Rs. {selectedSession.fee + 300}</span></div>
                     </div>
                   </div>
 
@@ -257,7 +443,12 @@ export default function BookAppointment() {
                     onClick={handlePayment}
                     disabled={isProcessing}
                   >
-                    {isProcessing ? processingPayment : (
+                    {isProcessing ? (
+                      <>
+                        <Loader2 className="w-5 h-5 animate-spin" />
+                        {processingPayment}
+                      </>
+                    ) : (
                       <>
                         <CreditCard className="w-5 h-5" />
                         {payButton}
